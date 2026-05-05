@@ -17,7 +17,7 @@ export function SiteNav({ dict, locale }: Props) {
           {dict.links.map((l) => (
             <li key={l.href}>
               <a
-                href={`/${locale}${l.href}`}
+                href={l.href}
                 className="text-[10px] tracking-[0.25em] uppercase hover:text-[var(--accent-red)]"
               >
                 {l.label}
@@ -28,7 +28,7 @@ export function SiteNav({ dict, locale }: Props) {
         <div className="flex items-center gap-3">
           <LanguageSwitcher current={locale} />
           <a
-            href={`/${locale}#cta`}
+            href="#cta"
             className="pixel-button active:pixel-button-press hidden sm:inline-block"
             style={{ background: "var(--accent-green)" }}
           >

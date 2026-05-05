@@ -160,7 +160,21 @@ CJK locales swap fonts via a `.lang-zh` / `.lang-ja` wrapper class on the `[loca
 
 ## Deploy
 
-Vercel (recommended) — zero config, picks up Next 16 + the `proxy.ts` convention.
+### GitHub Pages (current)
+
+`.github/workflows/deploy.yml` builds with `GITHUB_PAGES=true` and pushes the `out/` dir to GitHub Pages on every push to `main`. Live at `https://kairos-ai-tech.github.io/vcom-product-page/`.
+
+One-time repo setup: **Settings → Pages → Source = GitHub Actions**.
+
+The workflow sets `NEXT_PUBLIC_BASE_PATH=/vcom-product-page`. Change to a custom domain by setting it to `""` and adding a `CNAME` to `public/`.
+
+Static export caveats:
+- `proxy.ts` does not run — bare `/` is handled by `src/app/page.tsx`, which meta-refreshes to the default locale and runs an Accept-Language detection client-side.
+- All in-page anchor links use plain `<a href="#anchor">` (basePath-safe) instead of `<Link href="/${locale}#anchor">` which would force a navigation.
+
+### Vercel (alternative)
+
+Zero config, picks up Next 16 + `proxy.ts`. Skip the `GITHUB_PAGES` env var — Vercel runs the full Next runtime.
 
 Set `NEXT_PUBLIC_SITE_URL` in production so OG / Twitter cards resolve absolute URLs correctly.
 

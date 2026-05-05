@@ -1,9 +1,8 @@
-import Link from "next/link";
 import type { Dict } from "@/i18n/types";
 
-type Props = { dict: Dict["pricing"]; locale: string };
+type Props = { dict: Dict["pricing"]; locale?: string };
 
-export function Pricing({ dict, locale }: Props) {
+export function Pricing({ dict }: Props) {
   const [l1, l2, l3] = dict.headlineLines;
   return (
     <section
@@ -61,8 +60,8 @@ export function Pricing({ dict, locale }: Props) {
                 ))}
               </ul>
 
-              <Link
-                href={`/${locale}#waitlist`}
+              <a
+                href="#waitlist"
                 className="pixel-button active:pixel-button-press mt-6 self-start"
                 style={{
                   background: t.highlight
@@ -71,7 +70,7 @@ export function Pricing({ dict, locale }: Props) {
                 }}
               >
                 {t.cta}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>

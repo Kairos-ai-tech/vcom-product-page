@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Minifig } from "@/components/Minifig";
 import {
   PixelCoin,
@@ -8,9 +7,9 @@ import {
 } from "@/components/PixelSprites";
 import type { Dict } from "@/i18n/types";
 
-type Props = { dict: Dict["hero"]; locale: string };
+type Props = { dict: Dict["hero"]; locale?: string };
 
-export function Hero({ dict, locale }: Props) {
+export function Hero({ dict }: Props) {
   const [l1, l2, l3] = dict.headlineLines;
   return (
     <section className="relative overflow-hidden border-b-[var(--pixel)] border-[var(--panel-border)]">
@@ -50,20 +49,20 @@ export function Hero({ dict, locale }: Props) {
             id="cta"
             className="anim-pop-in delay-8 mt-2 flex flex-wrap items-center gap-4"
           >
-            <Link
-              href={`/${locale}#waitlist`}
+            <a
+              href="#waitlist"
               className="pixel-button active:pixel-button-press anim-glow"
               style={{ background: "var(--accent-green)" }}
             >
               {dict.primaryCta}
-            </Link>
-            <Link
-              href={`/${locale}#standup`}
+            </a>
+            <a
+              href="#standup"
               className="pixel-button active:pixel-button-press"
               style={{ background: "var(--panel)" }}
             >
               {dict.secondaryCta}
-            </Link>
+            </a>
           </div>
 
           <p className="font-body flex items-center gap-2 text-xs text-[var(--foreground)]/60">

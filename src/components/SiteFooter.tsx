@@ -1,8 +1,8 @@
 import type { Dict } from "@/i18n/types";
 
-type Props = { dict: Dict["footer"]; locale: string };
+type Props = { dict: Dict["footer"]; locale?: string };
 
-export function SiteFooter({ dict, locale }: Props) {
+export function SiteFooter({ dict }: Props) {
   return (
     <footer className="border-t-[var(--pixel)] border-[var(--panel-border)] bg-[var(--panel)]">
       <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
@@ -15,10 +15,7 @@ export function SiteFooter({ dict, locale }: Props) {
         <ul className="flex flex-wrap gap-4 text-[10px] tracking-[0.2em] uppercase">
           {dict.links.map((l) => (
             <li key={l.href}>
-              <a
-                className="hover:text-[var(--accent-red)]"
-                href={l.href.startsWith("mailto:") ? l.href : `/${locale}${l.href}`}
-              >
+              <a className="hover:text-[var(--accent-red)]" href={l.href}>
                 {l.label}
               </a>
             </li>

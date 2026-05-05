@@ -39,6 +39,8 @@ export default async function Page({ params }: PageProps) {
         <CTA dict={dict.cta} />
       </main>
       <SiteFooter dict={dict.footer} locale={locale} />
+      {/* locale prop kept on these for typed-prop consistency even
+          though Hero/Pricing/Footer no longer use it; harmless extra. */}
     </>
   );
 }
