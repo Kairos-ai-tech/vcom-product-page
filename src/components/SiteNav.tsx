@@ -1,18 +1,19 @@
-import Link from "next/link";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import type { Locale } from "@/i18n/config";
 import type { Dict } from "@/i18n/types";
 
 type Props = { dict: Dict["nav"]; locale: Locale };
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export function SiteNav({ dict, locale }: Props) {
   return (
     <header className="sticky top-0 z-20 border-b-[var(--pixel)] border-[var(--panel-border)] bg-[var(--background)]">
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
-        <Link href={`/${locale}`} className="flex items-center gap-3">
+        <a href={`${basePath}/${locale}/`} className="flex items-center gap-3">
           <PixelLogo />
           <span className="text-sm">vcom</span>
-        </Link>
+        </a>
         <ul className="hidden items-center gap-6 md:flex">
           {dict.links.map((l) => (
             <li key={l.href}>
