@@ -1,28 +1,30 @@
-import type { Metadata } from "next";
 import { defaultLocale } from "@/i18n/config";
 import { RedirectToLocale } from "@/components/RedirectToLocale";
 
-// Bare `/` lands here on static-export builds (GitHub Pages). Next
-// renders root layout's <html><body> around this; the meta refresh
-// kicks in even with JS off, and RedirectToLocale upgrades the
-// destination per Accept-Language client-side.
+// Bare `/` lands here on static-export builds (GitHub Pages). The proxy
+// can't run, so we generate a real index.html that:
+//   1. Uses an http-equiv refresh in <head> (works without JS).
+//   2. Boots RedirectToLocale to upgrade the destination per
+//      Accept-Language with basePath baked in.
+// metadata.other emits <meta name="..."> which doesn't trigger refresh,
+// so we render the meta tag directly inside this component instead.
 
-const fallback = `/${defaultLocale}/`;
-
-export const metadata: Metadata = {
-  title: "vcom — redirecting…",
-  // Meta refresh as the no-JS fallback. Setting it via metadata.other
-  // lets Next inline it into <head> at build.
-  other: { refresh: `0; url=${fallback}` },
-};
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const fallback = `${basePath}/${defaultLocale}/`;
 
 export default function RootRedirect() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <RedirectToLocale fallback={fallback} />
-      <noscript>
-        <a href={fallback}>Continue to vcom →</a>
-      </noscript>
-    </main>
+    <>
+      {/* Inline meta-refresh — Next inlines top-level <meta> from a
+          page into <head> at build, and unlike metadata.other this
+          uses http-equiv so the browser actually honours it. */}
+      <meta httpEquiv="refresh" content={`0; url=${fallback}`} />
+      <main className="flex min-h-screen items-center justify-center">
+        <RedirectToLocale fallback={fallback} basePath={basePath} />
+        <noscript>
+          <a href={fallback}>Continue to vcom →</a>
+        </noscript>
+      </main>
+    </>
   );
 }

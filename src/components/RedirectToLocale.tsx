@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
-import { defaultLocale, locales, type Locale } from "@/i18n/config";
+import { defaultLocale, type Locale } from "@/i18n/config";
 
 // Client-side locale picker for the static-export root index. Reads
 // navigator.language, maps to one of our supported locales, then
-// hard-replaces the URL. basePath-aware via window.location pathname.
+// hard-replaces the URL with basePath baked in (passed as prop so we
+// don't have to read env vars at runtime).
 
-type Props = { fallback: string };
+type Props = { fallback: string; basePath: string };
 
 function pick(): Locale {
   if (typeof navigator === "undefined") return defaultLocale;
@@ -20,13 +21,10 @@ function pick(): Locale {
   return defaultLocale;
 }
 
-export function RedirectToLocale({ fallback }: Props) {
+export function RedirectToLocale({ fallback, basePath }: Props) {
   useEffect(() => {
-    const target = `/${pick()}/`;
-    // basePath is stripped from window.location.pathname automatically
-    // by the browser; we only need to compute the locale-relative path.
-    if (locales.length) window.location.replace(target);
-    else window.location.replace(fallback);
-  }, [fallback]);
+    const target = `${basePath}/${pick()}/`;
+    window.location.replace(target || fallback);
+  }, [fallback, basePath]);
   return null;
 }
