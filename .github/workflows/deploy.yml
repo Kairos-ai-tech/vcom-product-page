@@ -31,8 +31,9 @@ jobs:
       - name: Build (static export)
         env:
           GITHUB_PAGES: "true"
-          NEXT_PUBLIC_BASE_PATH: /vcom-product-page
-          NEXT_PUBLIC_SITE_URL: https://kairos-ai-tech.github.io/vcom-product-page
+          # Custom domain serves at root, so no basePath prefix.
+          NEXT_PUBLIC_BASE_PATH: ""
+          NEXT_PUBLIC_SITE_URL: https://vcom.kairosaitech.com
         run: bun run build
 
       - name: Ensure .nojekyll
