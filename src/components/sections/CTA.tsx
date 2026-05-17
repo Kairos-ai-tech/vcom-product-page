@@ -1,4 +1,7 @@
+"use client";
+
 import { Minifig } from "@/components/Minifig";
+import { track } from "@/lib/analytics";
 import type { Dict } from "@/i18n/types";
 
 type Props = { dict: Dict["cta"] };
@@ -28,6 +31,14 @@ export function CTA({ dict }: Props) {
             className="mt-6 flex flex-col gap-3 sm:flex-row"
             action="#"
             method="post"
+            onSubmit={(e) => {
+              // Form is a stub today — intercept so we fire analytics
+              // and don't navigate the page on submit.
+              e.preventDefault();
+              const fd = new FormData(e.currentTarget);
+              const email = String(fd.get("email") ?? "");
+              track("signup_clicked", { source: "waitlist", hasEmail: email.length > 0 });
+            }}
           >
             <label htmlFor="email" className="sr-only">
               {dict.emailLabel}

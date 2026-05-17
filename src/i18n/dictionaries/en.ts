@@ -293,8 +293,8 @@ export const en: Dict = {
   },
   cta: {
     eyebrow: "▶ join the beta",
-    headlineLines: ["solo founders", "wanted.", "first 100 only."],
-    body: "3 months free. weekly 30-min feedback call. you help shape the three coworkers, we help clear your inbox.",
+    headlineLines: ["solo founders", "wanted.", "first 100 spots."],
+    body: "14-day full-team trial. 30-min onboarding call if you want one. help shape the three coworkers, we help clear your inbox.",
     emailLabel: "email",
     emailPlaceholder: "you@your-startup.com",
     submit: "▶ request access",
