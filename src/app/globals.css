@@ -369,6 +369,21 @@ body {
   40%, 60% { opacity: 1; transform: scale(1); }
 }
 
+/* Hero scene: document sprite walks from Anna's desk (~16% from left)
+   to Oliver's desk (~72% from left), then resets. Pixel-stepped so
+   the doc reads like a sprite hopping across, not a smooth glide. */
+@keyframes hero-doc-walk {
+  0%, 8%   { transform: translateX(0); opacity: 1; }
+  45%      { transform: translateX(220%); opacity: 1; }
+  55%, 75% { transform: translateX(440%); opacity: 1; }
+  82%      { transform: translateX(440%); opacity: 0; }
+  100%     { transform: translateX(0); opacity: 0; }
+}
+
+.hero-doc {
+  animation: hero-doc-walk 6s steps(20, end) infinite;
+}
+
 @keyframes pixel-state-cycle {
   /* Used to cycle the office mock through idle/working/waiting frames
      so the scene reads as alive even without a websocket. Pure CSS
@@ -436,8 +451,11 @@ body {
   .anim-rainbow,
   .anim-coin,
   .anim-sparkle,
+  .hero-doc,
   .marquee-track {
     animation: none !important;
   }
   .anim-pop-in { opacity: 1; transform: none; }
+  /* Park the document at Anna's desk so the scene composes statically. */
+  .hero-doc { transform: none; opacity: 1; }
 }

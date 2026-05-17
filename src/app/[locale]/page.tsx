@@ -32,7 +32,6 @@ export default async function Page({ params }: PageProps) {
         <Team dict={dict.team} />
         <Standup dict={dict.standup} />
         <Office dict={dict.office} />
-        <MarqueeTicker items={dict.marquee} bg="var(--accent-pink)" />
         <HowItWorks dict={dict.how} />
         <Pricing dict={dict.pricing} locale={locale} />
         <FAQ dict={dict.faq} />

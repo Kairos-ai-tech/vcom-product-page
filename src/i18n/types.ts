@@ -13,15 +13,17 @@ export type Dict = {
   };
   hero: {
     eyebrow: string;
-    headlineLines: [string, string, string]; // 3 lines, last is highlighted
-    body: string;
-    bullets: [string, string, string];
+    // Two-line lowercase headline. Split on "/" in the spec —
+    // rendered as two stacked lines, last with a yellow marker.
+    headlineLines: [string, string];
+    subhead: string;
+    // Three short feature lines, each gets a ► marker.
+    features: [string, string, string];
     primaryCta: string;
+    primaryCtaNote: string; // small text under the CTA, e.g. "no card"
     secondaryCta: string;
-    fineprint: string;
-    boardTag: string;
-    boardSub: string;
-    boardCaption: string; // teaser line under the tiles, oliver →
+    trustLine: string;
+    sceneAria: string; // a11y label for the animated office scene
   };
   marquee: string[];
   insight: {

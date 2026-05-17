@@ -18,20 +18,20 @@ export const en: Dict = {
   },
   hero: {
     eyebrow: "▶ player 1 ready",
-    headlineLines: ["hire a virtual", "company in", "5 minutes"],
-    body: "Anna handles HR. Kai clears your inbox. Oliver runs the team. Three AI coworkers built for solo founders. They draft. You approve. Press start.",
-    bullets: [
-      "no chat-bot fatigue — meet your team in a daily stand-up",
-      "watch them work in a tiny pixel office",
-      "every action approved by you. autonomy is earned",
+    headlineLines: ["three ai coworkers", "for the company-of-one"],
+    subhead:
+      "Anna runs ops. Kai clears your inbox. Oliver runs the team. They draft. You approve. Press start.",
+    features: [
+      "daily stand-up — not another chat box",
+      "watch them work in a pixel office",
+      "approval-first — autonomy is earned",
     ],
-    primaryCta: "▶ join the beta",
+    primaryCta: "▶ start 14-day trial",
+    primaryCtaNote: "no card required",
     secondaryCta: "see the stand-up",
-    fineprint: "multilingual · approval-first · launching 2026",
-    boardTag: "select your party",
-    boardSub: "stage 01 — onboarding",
-    boardCaption:
-      "good morning. kai drafted 8 replies overnight. anna queued 1 contract. ready when you are",
+    trustLine: "no card · 14 days full team · drops to free, never disappears",
+    sceneAria:
+      "animated pixel office: three desks. anna at her desk with coffee, kai in the middle with a 'needs you' pulse, oliver at a retro crt monitor on the right. a document moves from anna's desk to oliver's, representing a handoff.",
   },
   marquee: [
     "now hiring · solo founders only",

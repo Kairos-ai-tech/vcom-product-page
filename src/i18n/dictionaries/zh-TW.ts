@@ -22,20 +22,23 @@ export const zhTW: Dict = {
   },
   hero: {
     eyebrow: "▶ player 1 ready",
-    headlineLines: ["五分鐘", "雇用一間", "虛擬公司"],
-    body: "Anna 處理人資。Kai 清空你的收件匣。Oliver 統籌團隊。三位 AI 同事，為一人公司打造。他們起草、你核准。Press Start。",
-    bullets: [
-      "不再被聊天機器人疲勞轟炸 — 每天早上和團隊開站立會議",
-      "在小小的像素辦公室裡，看著他們工作",
-      "每個動作都由你核准，自主權需要被贏得",
+    // TODO(i18n): hero restructured for US positioning (two-line headline,
+    // 3 ► features, 14-day trial CTA). zh-TW copy mirrors EN until the
+    // translation pass — keeps the page renderable in zh-TW today.
+    headlineLines: ["three ai coworkers", "for the company-of-one"],
+    subhead:
+      "Anna runs ops. Kai clears your inbox. Oliver runs the team. They draft. You approve. Press start.",
+    features: [
+      "daily stand-up — not another chat box",
+      "watch them work in a pixel office",
+      "approval-first — autonomy is earned",
     ],
-    primaryCta: "▶ 加入 beta",
-    secondaryCta: "看看站立會議",
-    fineprint: "多語支援 · 核准優先 · 2026 上線",
-    boardTag: "選擇你的團隊",
-    boardSub: "stage 01 — onboarding",
-    boardCaption:
-      "早安。Kai 昨晚草擬了 8 封回覆，Anna 排了 1 份合約。隨時可以開始",
+    primaryCta: "▶ start 14-day trial",
+    primaryCtaNote: "no card required",
+    secondaryCta: "see the stand-up",
+    trustLine: "no card · 14 days full team · drops to free, never disappears",
+    sceneAria:
+      "animated pixel office: three desks. anna at her desk with coffee, kai in the middle with a 'needs you' pulse, oliver at a retro crt monitor on the right. a document moves from anna's desk to oliver's, representing a handoff.",
   },
   marquee: [
     "徵才中 · 只收一人公司",

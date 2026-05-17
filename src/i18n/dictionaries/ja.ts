@@ -22,20 +22,23 @@ export const ja: Dict = {
   },
   hero: {
     eyebrow: "▶ player 1 ready",
-    headlineLines: ["バーチャル会社を", "5分で", "雇う"],
-    body: "Annaが人事を担当。Kaiが受信箱を片付ける。Oliverがチームを回す。一人会社のための3人のAI同僚。彼らが下書き、あなたが承認。Press Start。",
-    bullets: [
-      "チャットボット疲れはもう終わり — 朝のスタンドアップでチームに会う",
-      "小さなピクセルオフィスで、彼らが働く姿を見る",
-      "すべての操作はあなたの承認後。自律性は獲得するもの",
+    // TODO(i18n): hero restructured for US positioning (two-line headline,
+    // 3 ► features, 14-day trial CTA). ja copy mirrors EN until the
+    // translation pass — keeps the page renderable in ja today.
+    headlineLines: ["three ai coworkers", "for the company-of-one"],
+    subhead:
+      "Anna runs ops. Kai clears your inbox. Oliver runs the team. They draft. You approve. Press start.",
+    features: [
+      "daily stand-up — not another chat box",
+      "watch them work in a pixel office",
+      "approval-first — autonomy is earned",
     ],
-    primaryCta: "▶ ベータに参加",
-    secondaryCta: "スタンドアップを見る",
-    fineprint: "多言語対応 · 承認ファースト · 2026年ローンチ",
-    boardTag: "チームを選ぶ",
-    boardSub: "stage 01 — オンボーディング",
-    boardCaption:
-      "おはようございます。Kaiが昨夜8件の返信を下書きしました。Annaが契約を1件キューに入れています。準備ができたらどうぞ",
+    primaryCta: "▶ start 14-day trial",
+    primaryCtaNote: "no card required",
+    secondaryCta: "see the stand-up",
+    trustLine: "no card · 14 days full team · drops to free, never disappears",
+    sceneAria:
+      "animated pixel office: three desks. anna at her desk with coffee, kai in the middle with a 'needs you' pulse, oliver at a retro crt monitor on the right. a document moves from anna's desk to oliver's, representing a handoff.",
   },
   marquee: [
     "募集中 · 一人会社限定",
