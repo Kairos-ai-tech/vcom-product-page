@@ -176,7 +176,7 @@ export const en: Dict = {
     eyebrow: "▶ how it works",
     headlineLines: ["5 minutes to hire.", "5 minutes a day to run."],
     steps: [
-      { n: "01", title: "connect", body: "gmail · slack · google calendar · drive · stripe (read-only). hand-rolled OAuth, no scopes you don't expect." },
+      { n: "01", title: "connect", body: "gmail · stripe · github · slack · discord · calendar · drive. hand-rolled OAuth, only the scopes you'd expect." },
       { n: "02", title: "introduce", body: "tell oliver about your business in 3 minutes. brand voice, customer types, contractors, the stack. he briefs anna and kai." },
       { n: "03", title: "draft", body: "team works overnight. inbox triaged, contracts queued, FAQ updates proposed. nothing sent without you." },
       { n: "04", title: "approve", body: "open the app at 8am. tap through the stand-up. coffee in hand. team executes in the office while you ship." },
