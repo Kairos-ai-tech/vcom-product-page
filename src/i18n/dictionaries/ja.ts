@@ -238,13 +238,37 @@ export const ja: Dict = {
     headlineLines: ["デモで", "ファウンダーが", "聞く質問。"],
     qLabel: "Q.",
     aLabel: "A.",
+    // TODO(i18n): FAQ rewritten for the US indie-SaaS beachhead. Mirrors EN
+    // until a native ja translator passes over the new copy.
     items: [
-      { q: "これはキャラを乗せただけのChatGPTでは？", a: "違います。毎朝のスタンドアップと空間オフィスが差別化点です。モデルは下層のClaudeです。" },
-      { q: "エージェントは勝手に動きますか？", a: "いいえ。すべての送信、契約、エスカレーションはあなたの承認が必要です。" },
-      { q: "対応言語は？", a: "英語、繁体字中国語、日本語。あなたが書いた言語でキャラクターが返信します。" },
-      { q: "本物のバーチャルアシスタントを雇った方がいい？", a: "両方使ってください。バーチャルアシスタントは判断系の仕事を。vcomは残り8割を — 一部のコストで。" },
-      { q: "データはどこに置かれますか？", a: "モデル呼び出しはAnthropicへ。データは弊社のPostgresに保存されます。詳細なデータレジデンシーはbeta公開時に発表します。" },
-      { q: "ロードマップは？", a: "v2：財務・法務の同僚、音声返信、モバイルアプリ、より深い統合。" },
+      {
+        q: "how is this different from ChatGPT or Claude with a prompt?",
+        a: "the daily stand-up and spatial office. the model is just claude underneath — what's different is that the team remembers you, hands off to each other, and shows up at 8am whether you do or not.",
+      },
+      {
+        q: "does it work with GitHub / Stripe / Discord?",
+        a: "yes. github issue triage, stripe failed-charge recovery, discord read+draft. gmail and slack too. full list at /integrations.",
+      },
+      {
+        q: "do the agents do things without asking?",
+        a: "no. you approve every send, every policy update, every escalation. trusted-action mode comes later for users who want it.",
+      },
+      {
+        q: "what's the 14-day trial — is there a card?",
+        a: "no card. full team for 14 days. on day 15, anna and kai head out and you drop to oliver-only free forever. team's there when you're ready to come back.",
+      },
+      {
+        q: "what happens if i leave it alone for a week?",
+        a: "oliver keeps drafting, nothing gets sent. when you come back, the stand-up summarizes the week instead of a single morning.",
+      },
+      {
+        q: "where does my data live?",
+        a: "model calls to anthropic. your data in postgres on aws us-east-1. SOC 2 in progress. full details at /security.",
+      },
+      {
+        q: "what's on the roadmap?",
+        a: "v2: finance + growth coworkers, voice replies, mobile app, deeper github + linear integrations.",
+      },
     ],
   },
   cta: {

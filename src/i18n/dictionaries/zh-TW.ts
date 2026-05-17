@@ -234,13 +234,37 @@ export const zhTW: Dict = {
     headlineLines: ["創業者", "在 demo 時", "問的問題。"],
     qLabel: "Q.",
     aLabel: "A.",
+    // TODO(i18n): FAQ rewritten for the US indie-SaaS beachhead. Mirrors EN
+    // until a native zh-TW translator passes over the new copy.
     items: [
-      { q: "這不就是 ChatGPT 套個角色嗎？", a: "不是。每日站立會議和空間辦公室才是差別。模型只是底層的 Claude。" },
-      { q: "agent 會自己做事嗎？", a: "不會。每一次發送、每一份合約、每一個 escalation 都要你核准。" },
-      { q: "支援哪些語言？", a: "英文、繁中、日文。你用什麼語言寫，角色就用什麼語言回。" },
-      { q: "為什麼不直接請虛擬助理？", a: "兩個都用。虛擬助理處理判斷型工作。vcom 處理另外 80% — 一小部分的成本。" },
-      { q: "我的資料放在哪裡？", a: "模型呼叫送到 Anthropic。資料存在我們的 Postgres 上。完整的資料居留地細節會在 beta 上線時公布。" },
-      { q: "之後的 roadmap？", a: "v2：財務 + 法律同事、語音回覆、行動 app、更深的整合。" },
+      {
+        q: "how is this different from ChatGPT or Claude with a prompt?",
+        a: "the daily stand-up and spatial office. the model is just claude underneath — what's different is that the team remembers you, hands off to each other, and shows up at 8am whether you do or not.",
+      },
+      {
+        q: "does it work with GitHub / Stripe / Discord?",
+        a: "yes. github issue triage, stripe failed-charge recovery, discord read+draft. gmail and slack too. full list at /integrations.",
+      },
+      {
+        q: "do the agents do things without asking?",
+        a: "no. you approve every send, every policy update, every escalation. trusted-action mode comes later for users who want it.",
+      },
+      {
+        q: "what's the 14-day trial — is there a card?",
+        a: "no card. full team for 14 days. on day 15, anna and kai head out and you drop to oliver-only free forever. team's there when you're ready to come back.",
+      },
+      {
+        q: "what happens if i leave it alone for a week?",
+        a: "oliver keeps drafting, nothing gets sent. when you come back, the stand-up summarizes the week instead of a single morning.",
+      },
+      {
+        q: "where does my data live?",
+        a: "model calls to anthropic. your data in postgres on aws us-east-1. SOC 2 in progress. full details at /security.",
+      },
+      {
+        q: "what's on the roadmap?",
+        a: "v2: finance + growth coworkers, voice replies, mobile app, deeper github + linear integrations.",
+      },
     ],
   },
   cta: {

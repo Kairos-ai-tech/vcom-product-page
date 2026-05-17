@@ -233,16 +233,38 @@ export const en: Dict = {
   },
   faq: {
     eyebrow: "▶ faq",
-    headlineLines: ["questions", "founders ask", "on the demo call."],
+    headlineLines: ["questions", "indie founders ask", "before the trial."],
     qLabel: "Q.",
     aLabel: "A.",
     items: [
-      { q: "is this just chatgpt with characters on top?", a: "no. the daily stand-up and spatial office are what make it different. the model is just claude underneath." },
-      { q: "do the agents do things without asking?", a: "no. you approve every send, every contract, every escalation." },
-      { q: "what languages does it speak?", a: "english, traditional chinese, japanese. characters reply in whatever language you write in." },
-      { q: "why not just hire a real virtual assistant?", a: "do both. a virtual assistant handles judgement calls. vcom handles the other 80% — at a fraction of the cost." },
-      { q: "where does my data live?", a: "model calls go to anthropic. your data sits in postgres on our servers. full data residency details at beta launch." },
-      { q: "what's on the roadmap?", a: "v2: finance + legal coworkers, voice replies, mobile app, deeper integrations." },
+      {
+        q: "how is this different from ChatGPT or Claude with a prompt?",
+        a: "the daily stand-up and spatial office. the model is just claude underneath — what's different is that the team remembers you, hands off to each other, and shows up at 8am whether you do or not.",
+      },
+      {
+        q: "does it work with GitHub / Stripe / Discord?",
+        a: "yes. github issue triage, stripe failed-charge recovery, discord read+draft. gmail and slack too. full list at /integrations.",
+      },
+      {
+        q: "do the agents do things without asking?",
+        a: "no. you approve every send, every policy update, every escalation. trusted-action mode comes later for users who want it.",
+      },
+      {
+        q: "what's the 14-day trial — is there a card?",
+        a: "no card. full team for 14 days. on day 15, anna and kai head out and you drop to oliver-only free forever. team's there when you're ready to come back.",
+      },
+      {
+        q: "what happens if i leave it alone for a week?",
+        a: "oliver keeps drafting, nothing gets sent. when you come back, the stand-up summarizes the week instead of a single morning.",
+      },
+      {
+        q: "where does my data live?",
+        a: "model calls to anthropic. your data in postgres on aws us-east-1. SOC 2 in progress. full details at /security.",
+      },
+      {
+        q: "what's on the roadmap?",
+        a: "v2: finance + growth coworkers, voice replies, mobile app, deeper github + linear integrations.",
+      },
     ],
   },
   cta: {
