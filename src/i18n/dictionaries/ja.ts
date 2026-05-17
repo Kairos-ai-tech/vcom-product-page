@@ -151,16 +151,18 @@ export const ja: Dict = {
   },
   office: {
     eyebrow: "▶ 空間オフィス",
+    // TODO(i18n): office scenes rewritten for US indie-SaaS scenarios
+    // (refund policy / chargeback). ja copy retains the original
+    // contractor-NDA scenarios — translator pass to align.
     headlineLines: ["チームが働く姿を見る。", "チャットログではなく。"],
-    body: "3つのデスク。3人のキャラクター。一目で見渡せるシーン。キャラクターをクリックして詳細へ。引き継ぎが起こる瞬間を見る — Annaが契約をOliverに渡し、Oliverがチケットを開く。",
+    body: "3つのデスク。3人のキャラクター。一目で見渡せるシーン。デスクにホバーすると、今何をしているか見えます。Annaが書類をOliverに渡し、Kaiはあなたが必要なときに点滅します。",
     states: [
-      "アイドル — コーヒー中、作業なし",
-      "作業中 — 返信を下書き、チケット処理",
-      "あなた待ち — 承認するものがある",
-      "コラボ中 — 2人のキャラクターが同じデスクに",
+      "アイドル — コーヒー中",
+      "作業中 — 下書き・処理中",
+      "あなた待ち — 承認待ち",
+      "コラボ中 — 2人が同じデスクに",
     ],
-    coda:
-      "これが、人がスクショして友達に送る画面です。他のツールはこれを作りません — 彼らのブランドポジショニングからは外れます。",
+    coda: "これが、人がスクショして友達に送る画面です。狙いはそこ。",
     mockTag: "オフィス · ライブ",
     mockOnline: "● 3人オンライン",
     desks: [

@@ -151,16 +151,18 @@ export const zhTW: Dict = {
   },
   office: {
     eyebrow: "▶ 空間辦公室",
+    // TODO(i18n): office scenes rewritten for US indie-SaaS scenarios
+    // (refund policy / chargeback). zh-TW copy retains the original
+    // contractor-NDA scenarios — translator pass to align.
     headlineLines: ["看著你的團隊工作。", "不是聊天記錄。"],
-    body: "三張桌子。三位角色。一眼看完整個畫面。點角色可以深入。看著交接發生 — Anna 把合約走過去交給 Oliver、Oliver 開單追蹤。",
+    body: "三張桌子。三位角色。一眼看完整個畫面。把游標移到桌子上看每個人現在在做什麼。Anna 把文件交給 Oliver、Kai 在等你的時候會閃爍。",
     states: [
-      "閒置 — 喝著咖啡、沒在做事",
-      "工作中 — 起草回覆、處理 ticket",
-      "等你 — 有東西要核准",
-      "協作中 — 兩個角色在同一張桌子",
+      "閒置 — 喝著咖啡",
+      "工作中 — 起草、處理中",
+      "等你 — 需要核准",
+      "協作中 — 兩個人在同一張桌子",
     ],
-    coda:
-      "這是大家會截圖傳給朋友的畫面。其他工具不會做這個 — 對他們來說太脫離品牌定位。",
+    coda: "這是大家會截圖傳給朋友的畫面。重點就在這裡。",
     mockTag: "辦公室 · 即時",
     mockOnline: "● 3 人在線",
     desks: [

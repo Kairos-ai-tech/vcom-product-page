@@ -149,25 +149,24 @@ export const en: Dict = {
   office: {
     eyebrow: "▶ the spatial office",
     headlineLines: ["watch your team work.", "not a chat log."],
-    body: "Three desks. Three characters. One glanceable scene. Click a character to drill in. Watch handoffs happen — Anna walks the contract over to Oliver, Oliver opens a ticket.",
+    body: "Three desks. Three characters. One scene you can take in at a glance. Hover a desk to see what each is doing right now. Anna walks a doc over to Oliver, Kai pulses when something needs your eyes.",
     states: [
-      "idle — sipping coffee, no active work",
-      "working — drafting a reply, processing a ticket",
-      "waiting for you — has something to approve",
-      "collaborating — two characters at one desk",
+      "idle — sipping coffee",
+      "working — drafting, processing",
+      "waiting for you — needs approval",
+      "collaborating — two at one desk",
     ],
-    coda:
-      "This is the screen people screenshot and send their friends. Other tools will not ship this. It is off-brand for them.",
+    coda: "this is the screen people screenshot. that is the point.",
     mockTag: "office · live",
     mockOnline: "● 3 online",
     desks: [
-      { name: "ANNA", label: "drafting NDA", state: "working", color: "var(--accent-pink)" },
+      { name: "ANNA", label: "drafting refund policy", state: "working", color: "var(--accent-pink)" },
       { name: "OLIVER", label: "facilitating", state: "idle", color: "var(--accent-green)" },
-      { name: "KAI", label: "needs you", state: "waiting", color: "var(--accent-red)" },
+      { name: "KAI", label: "needs you — chargeback", state: "waiting", color: "var(--accent-red)" },
     ],
     handoffs: [
-      { from: "ANNA", to: "OLIVER", msg: "林 NDA → create tracking ticket" },
-      { from: "KAI", to: "YOU", msg: "customer mentioned legal action — needs eyes" },
+      { from: "ANNA", to: "OLIVER", msg: "refund policy → schedule announce" },
+      { from: "KAI", to: "YOU", msg: "chargeback from $499 customer — needs eyes" },
     ],
   },
   how: {
