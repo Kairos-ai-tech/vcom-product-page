@@ -62,22 +62,23 @@ export const en: Dict = {
       {
         name: "ANNA",
         display: "Anna",
-        role: "HR",
+        role: "OPS / PEOPLE",
         bg: "var(--accent-pink)",
-        tagline: "Warm and organized. Remembers every birthday and every NDA.",
+        tagline:
+          "Warm and organized. Remembers every policy decision and every contractor's start date.",
         does: [
-          "drafts contractor agreements + NDAs from your templates",
-          "walks new hires through onboarding + welcome packets",
-          "people db: contractors, rates, start dates, key docs",
-          "renewal + birthday reminders, before you forget",
+          "drafts customer policies, refund flows, ToS updates",
+          "handles edge-case customer situations Kai escalates",
+          "tracks important dates: domain renewals, SOC 2, filings",
+          "contractor agreements + onboarding when you hire",
         ],
         doesNot: [
-          "jurisdiction-specific tax math — flags to your accountant",
-          "payroll runs — hands off to your payroll tool",
+          "legal or tax advice — flags to your accountant",
+          "touch payments, payroll, or money-moving",
           "fire/hire decisions — drafts, you decide",
         ],
         signature:
-          "\"next week: 林 starts tuesday. welcome packet is in your inbox waiting for sign-off.\"",
+          "\"third refund request this month citing the 30-day window. your ToS says 14 days. want me to draft a policy update?\"",
       },
       {
         name: "KAI",
@@ -87,10 +88,10 @@ export const en: Dict = {
         tagline:
           "Fast, friendly, learns your brand voice. Clears your inbox.",
         does: [
-          "reads gmail / messenger / intercom / line / slack",
+          "reads gmail / github / slack / discord",
+          "catches failed Stripe charges, drafts recovery copy",
           "drafts replies in your brand voice",
           "self-updating FAQ from recurring questions",
-          "categorises tickets: auto-reply, review, escalate",
         ],
         doesNot: [
           "send replies without your approval (v1)",
