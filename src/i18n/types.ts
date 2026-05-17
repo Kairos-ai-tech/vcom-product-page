@@ -69,8 +69,13 @@ export type Dict = {
     eyebrow: string;
     headlineLines: [string, string, string];
     body: string;
-    mostChosen: string;
+    billing: {
+      monthlyLabel: string;
+      annualLabel: string; // includes the -20% bit, e.g. "annual -20%"
+    };
     tiers: PricingTier[];
+    footnote: string;
+    enterprise: { text: string; href: string };
   };
   faq: {
     eyebrow: string;
@@ -107,13 +112,21 @@ export type TeamCard = {
 };
 
 export type PricingTier = {
+  id: "free" | "solo" | "studio";
   name: string;
-  price: string;
-  sub: string;
+  // Two displayed forms so the monthly/annual toggle is a pure data swap —
+  // no math in the component, translators control formatting per locale.
+  monthly: { price: string; sub: string; note?: string };
+  annual: { price: string; sub: string; note?: string };
+  // Optional add-on line, rendered on a row of its own (e.g. "+ $29 / seat").
+  addon?: string;
   pitch: string;
-  features: string[];
+  // Each feature carries its own glyph so a tier can mix ✓ and ✗.
+  features: { glyph: "✓" | "✗"; text: string }[];
   cta: string;
+  ctaHref?: string;
   bg: string;
   accent: string;
   highlight?: boolean;
+  badge?: string; // small "▶ start here" style ribbon, only on the lead tier
 };
