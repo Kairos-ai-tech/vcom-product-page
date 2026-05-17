@@ -16,22 +16,30 @@ export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+// Resolves against the prod canonical so OpenGraph crawlers get
+// absolute URLs even when basePath is set for the GitHub Pages build.
+const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN ?? "https://vcom.kairosaitech.com";
+const ogImagePath = "/og/hero.png"; // placeholder — real asset supplied separately
+
 export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {
   const { locale } = await params;
   if (!locales.includes(locale as Locale)) return {};
   const dict = getDictionary(locale as Locale);
   return {
+    metadataBase: new URL(siteOrigin),
     title: dict.meta.title,
     description: dict.meta.description,
     openGraph: {
       title: dict.meta.title,
       description: dict.meta.description,
       locale: htmlLang[locale as Locale],
+      images: [{ url: ogImagePath, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title: dict.meta.title,
       description: dict.meta.description,
+      images: [ogImagePath],
     },
   };
 }
