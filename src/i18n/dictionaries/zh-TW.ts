@@ -48,18 +48,17 @@ export const zhTW: Dict = {
   ],
   insight: {
     eyebrow: "▶ 核心洞察",
-    headlineParts: {
-      line1: "AI 工具讓人覺得",
-      line2: "像軟體。",
-      emphasis: "同事",
-      rest: "讓人覺得像人。",
-    },
-    paragraphs: [
-      "每個 AI app 都是一個聊天框。你打字、它回答、你關掉分頁。沒有人會把 ChatGPT 當成同事在談論。",
-      "vcom 不是更聰明的 agent，而是 __HIGHLIGHT__ 的 agent：他們記得你、會主動跟進、彼此交接，也清楚自己不做什麼。",
-      "「一人公司 + AI 團隊」的論述早就在繁中商業媒體中擴散。市場正在自我教育，我們只要成為他們找到的那個產品。",
+    // TODO(i18n): rewritten as one paragraph + a single quote callout
+    // (was 3 paragraphs + inline highlight). zh-TW copy mirrors EN
+    // pending a native translator pass.
+    headlineLines: [
+      "ai tools feel like software.",
+      "coworkers feel like people.",
     ],
-    highlight: "感覺像一個團隊",
+    paragraph:
+      "Every AI app is a chat box — you type, it answers, you close the tab. vcom is the opposite shape. The three coworkers remember you, hand off to each other, know what they don't do, and show up at 8am whether you do or not. That difference shows up in how you talk about them.",
+    callout:
+      "you don't say \"i opened ChatGPT today.\" you say \"kai cleared the inbox and anna flagged a refund pattern.\"",
   },
   team: {
     eyebrow: "▶ 認識團隊",

@@ -3,35 +3,25 @@ import type { Dict } from "@/i18n/types";
 type Props = { dict: Dict["insight"] };
 
 export function Insight({ dict }: Props) {
-  // Paragraph 2 contains a __HIGHLIGHT__ marker that we replace with a
-  // yellow-marker span. Translators only need to know the marker exists.
-  const p2 = dict.paragraphs[1];
-  const [before, after] = p2.split("__HIGHLIGHT__");
-
+  const [h1, h2] = dict.headlineLines;
   return (
     <section className="border-b-[var(--pixel)] border-[var(--panel-border)] bg-[var(--panel)]">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 lg:grid-cols-[1fr_1.4fr]">
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 lg:grid-cols-[1fr_1.2fr]">
         <div>
           <p className="eyebrow text-[var(--accent-blue)]">{dict.eyebrow}</p>
           <h2 className="font-display mt-3 text-2xl sm:text-3xl">
-            {dict.headlineParts.line1} <br />
-            {dict.headlineParts.line2} <br />
-            <span className="anim-rainbow">
-              {dict.headlineParts.emphasis}
-            </span>{" "}
-            {dict.headlineParts.rest}
+            {h1} <br />
+            <span className="anim-rainbow">{h2}</span>
           </h2>
         </div>
-        <div className="font-body grid gap-5 text-base text-[var(--foreground)]/85">
-          <p>{dict.paragraphs[0]}</p>
-          <p>
-            {before}
-            <span className="bg-[var(--accent-yellow)] px-1 text-[var(--ink-on-accent)]">
-              {dict.highlight}
-            </span>
-            {after}
-          </p>
-          <p>{dict.paragraphs[2]}</p>
+        <div className="font-body grid gap-6 text-base text-[var(--foreground)]/85">
+          <p>{dict.paragraph}</p>
+          <blockquote
+            className="pixel-panel relative bg-[var(--background)] p-5"
+            style={{ borderLeft: "calc(var(--pixel) * 2) solid var(--accent-yellow)" }}
+          >
+            <p className="font-body text-lg leading-snug">{dict.callout}</p>
+          </blockquote>
         </div>
       </div>
     </section>

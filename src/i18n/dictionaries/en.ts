@@ -44,18 +44,14 @@ export const en: Dict = {
   ],
   insight: {
     eyebrow: "▶ insight",
-    headlineParts: {
-      line1: "ai tools feel",
-      line2: "like software.",
-      emphasis: "coworkers",
-      rest: "feel like people.",
-    },
-    paragraphs: [
-      "Every AI app is a chat box. You type, it answers, you close the tab. Nobody talks about ChatGPT like a colleague.",
-      "vcom is not smarter agents. It is agents that __HIGHLIGHT__ : they remember you, follow up, hand off to each other, and know what they don't do.",
-      "The one-person company + AI team movement is already spreading. The market is teaching itself. We just need to be the product they find.",
+    headlineLines: [
+      "ai tools feel like software.",
+      "coworkers feel like people.",
     ],
-    highlight: "feel like a team",
+    paragraph:
+      "Every AI app is a chat box — you type, it answers, you close the tab. vcom is the opposite shape. The three coworkers remember you, hand off to each other, know what they don't do, and show up at 8am whether you do or not. That difference shows up in how you talk about them.",
+    callout:
+      "you don't say \"i opened ChatGPT today.\" you say \"kai cleared the inbox and anna flagged a refund pattern.\"",
   },
   team: {
     eyebrow: "▶ meet the team",

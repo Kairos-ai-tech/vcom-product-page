@@ -26,9 +26,9 @@ export type Dict = {
   marquee: string[];
   insight: {
     eyebrow: string;
-    headlineParts: { line1: string; line2: string; emphasis: string; rest: string };
-    paragraphs: [string, string, string];
-    highlight: string; // inline yellow-marker phrase inside paragraph 2
+    headlineLines: [string, string]; // sentence 1, sentence 2 — rendered on separate lines
+    paragraph: string; // one paragraph, no bullets
+    callout: string; // quote-sized pull-out beside the paragraph
   };
   team: {
     eyebrow: string;

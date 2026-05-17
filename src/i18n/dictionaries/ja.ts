@@ -48,18 +48,17 @@ export const ja: Dict = {
   ],
   insight: {
     eyebrow: "▶ インサイト",
-    headlineParts: {
-      line1: "AIツールは",
-      line2: "ソフトのように感じる。",
-      emphasis: "同僚",
-      rest: "は人のように感じる。",
-    },
-    paragraphs: [
-      "どのAIアプリもチャットボックスです。入力して、答えが返ってきて、タブを閉じる。誰もChatGPTを同僚のように語りません。",
-      "vcomは「より賢いエージェント」ではありません。__HIGHLIGHT__ エージェントです。あなたを覚え、フォローアップし、互いに引き継ぎ、自分が何をしないかを知っています。",
-      "「一人会社 + AIチーム」のムーブメントはすでに広がりつつあります。市場は自ら学んでいます。私たちはただ、彼らが見つけるプロダクトであればいい。",
+    // TODO(i18n): rewritten as one paragraph + a single quote callout
+    // (was 3 paragraphs + inline highlight). ja copy mirrors EN pending
+    // a native translator pass.
+    headlineLines: [
+      "ai tools feel like software.",
+      "coworkers feel like people.",
     ],
-    highlight: "チームのように感じる",
+    paragraph:
+      "Every AI app is a chat box — you type, it answers, you close the tab. vcom is the opposite shape. The three coworkers remember you, hand off to each other, know what they don't do, and show up at 8am whether you do or not. That difference shows up in how you talk about them.",
+    callout:
+      "you don't say \"i opened ChatGPT today.\" you say \"kai cleared the inbox and anna flagged a refund pattern.\"",
   },
   team: {
     eyebrow: "▶ チームを紹介",
