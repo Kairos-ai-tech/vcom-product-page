@@ -8,7 +8,7 @@ export const ja: Dict = {
   meta: {
     title: "vcom — 一人会社のためのバーチャルカンパニー",
     description:
-      "Anna · Kai · Oliver。3人のAI同僚 — 人事・カスタマーサポート・チーフオブスタッフ — を一人会社へ。毎朝のスタンドアップ、空間オフィス、すべての操作はあなたが承認。",
+      "Anna · Kai · Oliver。3人のAI同僚 — オペレーション・カスタマーサポート・チーフオブスタッフ — を一人会社へ。毎朝のスタンドアップ、空間オフィス、すべての操作はあなたが承認。",
   },
   nav: {
     links: [
@@ -22,23 +22,20 @@ export const ja: Dict = {
   },
   hero: {
     eyebrow: "▶ player 1 ready",
-    // TODO(i18n): hero restructured for US positioning (two-line headline,
-    // 3 ► features, 14-day trial CTA). ja copy mirrors EN until the
-    // translation pass — keeps the page renderable in ja today.
-    headlineLines: ["three ai coworkers", "for the company-of-one"],
+    headlineLines: ["3人のAI同僚", "一人会社のために"],
     subhead:
-      "Anna runs ops. Kai clears your inbox. Oliver runs the team. They draft. You approve. Press start.",
+      "Annaがオペレーション。Kaiが受信箱を片付ける。Oliverがチームを回す。彼らが下書き、あなたが承認。Press Start。",
     features: [
-      "daily stand-up — not another chat box",
-      "watch them work in a pixel office",
-      "approval-first — autonomy is earned",
+      "毎朝のスタンドアップ — もうチャットボックスじゃない",
+      "ピクセルオフィスで働く姿を見守る",
+      "承認ファースト — 自律は積み重ねで得る",
     ],
-    primaryCta: "▶ start 14-day trial",
-    primaryCtaNote: "no card required",
-    secondaryCta: "see the stand-up",
-    trustLine: "no card · 14 days full team · drops to free, never disappears",
+    primaryCta: "▶ 14日間トライアル開始",
+    primaryCtaNote: "クレジットカード不要",
+    secondaryCta: "スタンドアップを見る",
+    trustLine: "カード不要 · 14日間フルチーム · その後は無料へ、消えません",
     sceneAria:
-      "animated pixel office: three desks. anna at her desk with coffee, kai in the middle with a 'needs you' pulse, oliver at a retro crt monitor on the right. a document moves from anna's desk to oliver's, representing a handoff.",
+      "アニメーションのピクセルオフィス:3つのデスク。左でAnnaがコーヒー、中央でKaiが「あなたが必要」のパルス、右でOliverがCRTモニターの前に座る。書類がAnnaのデスクからOliverのデスクへ移動し、引き継ぎを表す。",
   },
   marquee: [
     "募集中 · 一人会社限定",
@@ -51,17 +48,14 @@ export const ja: Dict = {
   ],
   insight: {
     eyebrow: "▶ インサイト",
-    // TODO(i18n): rewritten as one paragraph + a single quote callout
-    // (was 3 paragraphs + inline highlight). ja copy mirrors EN pending
-    // a native translator pass.
     headlineLines: [
-      "ai tools feel like software.",
-      "coworkers feel like people.",
+      "AIツールはソフトウェアに見える。",
+      "同僚は人に見える。",
     ],
     paragraph:
-      "Every AI app is a chat box — you type, it answers, you close the tab. vcom is the opposite shape. The three coworkers remember you, hand off to each other, know what they don't do, and show up at 8am whether you do or not. That difference shows up in how you talk about them.",
+      "AIアプリはどれもチャットボックスです — 打って、答えて、タブを閉じる。vcomは逆の形をしています。3人の同僚はあなたを覚え、互いに引き継ぎ、自分がやらないことを知り、あなたが開こうが開くまいが朝8時に現れます。その違いは、あなたが彼らをどう語るかに表れます。",
     callout:
-      "you don't say \"i opened ChatGPT today.\" you say \"kai cleared the inbox and anna flagged a refund pattern.\"",
+      "「今日ChatGPTを開いた」とは言わない。「KaiがInboxを片付けて、Annaが返金パターンを見つけた」と言う。",
   },
   team: {
     eyebrow: "▶ チームを紹介",
@@ -72,49 +66,52 @@ export const ja: Dict = {
       {
         name: "ANNA",
         display: "アンナ · Anna",
-        role: "HR 人事",
+        role: "オペレーション / ピープル",
         bg: "var(--accent-pink)",
-        tagline: "温かくて整理上手。誰の誕生日も、どの業務委託契約がまだサインされていないかも、覚えています。",
+        tagline:
+          "温かくて整理上手。あらゆるポリシー決定と、業務委託先の開始日を覚えています。",
         does: [
-          "テンプレートから業務委託契約・NDAを下書き",
-          "新しいメンバーのオンボーディング + ウェルカムパケット",
-          "人材DB：業務委託先、報酬、開始日、重要書類",
-          "更新・誕生日・書類期限のリマインド、忘れる前に",
+          "カスタマーポリシー、返金フロー、ToS更新の下書き",
+          "Kaiがエスカレーションしたエッジケースに対応",
+          "重要な日付の追跡:ドメイン更新、SOC 2、各種申請",
+          "採用時の業務委託契約とオンボーディング",
         ],
         doesNot: [
-          "管轄ごとの税務計算 — 税理士へフラグ",
-          "給与計算の実行 — 給与ツールへ引き継ぎ",
-          "採用 / 契約終了の判断 — 下書きまで、決定はあなた",
+          "法務・税務アドバイス — 会計士へフラグ",
+          "支払い、給与、金銭移動には触れない",
+          "採用 / 解雇の判断 — 下書きまで、決定はあなた",
         ],
         signature:
-          "「来週のプレビュー：林さん火曜開始。ウェルカムパケットは受信箱でご確認をお待ちしています」",
+          "「今月3件目の返金請求が30日条項を引用しています。ToSには14日と書かれています。ポリシー更新の下書きを作りますか?」",
       },
       {
         name: "KAI",
         display: "カイ · Kai",
-        role: "CS カスタマーサポート",
+        role: "カスタマーサポート",
         bg: "var(--accent-blue)",
-        tagline: "速い、親しみやすい、あなたのブランドの声を学ぶ。受信箱を片付けます。",
+        tagline:
+          "速くて、親しみやすく、ブランドの声を学ぶ。受信箱を片付けます。",
         does: [
-          "gmail / LINE / messenger / intercom / slack を読む",
+          "gmail / github / slack / discord を読む",
+          "Stripeの決済失敗を検知、リカバリー文を下書き",
           "あなたのブランドの声で返信を下書き",
-          "繰り返し質問から自動更新されるFAQ",
-          "チケット分類：自動返信・要レビュー・エスカレーション",
+          "繰り返される質問から自動更新されるFAQ",
         ],
         doesNot: [
-          "あなたの承認なしに送信しない（v1）",
-          "返金やお金に関わる対応 — エスカレーション",
-          "SNS DM（別プロダクト、後ほど）",
+          "あなたの承認なしに送信しない(v1)",
+          "返金や金銭関連には触れない — エスカレーション",
+          "SNS DM(別プロダクト、後ほど)",
         ],
         signature:
-          "「昨夜12件のチケット。8件の下書き準備完了、3件は確認をお願いします、1件はエスカレーション — お客様が法的措置に言及」",
+          "「昨夜12件のチケット。下書き8件は送信準備完了、1件エスカレーション — お客様が法的措置に言及。」",
       },
       {
         name: "OLIVER",
         display: "オリバー · Oliver",
-        role: "OPS · チーフオブスタッフ",
+        role: "オペレーション · チーフオブスタッフ",
         bg: "var(--accent-green)",
-        tagline: "落ち着いていて、簡潔で、非常に有能。実際にチームを回している人。",
+        tagline:
+          "落ち着いていて、簡潔で、非常に有能。実際にチームを回している人。",
         does: [
           "曖昧な依頼を適切なキャラクターへルーティング",
           "クロスキャラクターのワークフロー + プロジェクトボード",
@@ -126,7 +123,7 @@ export const ja: Dict = {
           "戦略的判断はしない — 選択肢を出す、決定はあなた",
         ],
         signature:
-          "「今週：オンボーディング1件（Anna担当）、チケット14件（Kai下書き済）、決定待ち3件です」",
+          "「今週:オンボーディング1件(Anna担当)、チケット14件(Kai下書き済)、決定待ち3件。」",
       },
     ],
   },
@@ -142,21 +139,19 @@ export const ja: Dict = {
     ],
     foot: "タップで承認。タイプで反論。タイプしたくなければ音声で返信。コーヒーを淹れる前に、90秒以内で完了。",
     mockTag: "今日 · 08:14",
-    mockSub: "☀ 火曜 · 6件",
+    mockSub: "☀ 火曜 · 5件",
     mockFoot: "他のことは後でいい",
     mockComplete: "スタンドアップ完了",
     items: [
-      { who: "kai", bg: "var(--accent-blue)", text: "返信下書き8件 · エスカレーション1件", action: "確認" },
-      { who: "anna", bg: "var(--accent-pink)", text: "林さんのNDA下書き · サインをお待ちしています", action: "承認" },
-      { who: "oliver", bg: "var(--accent-green)", text: "週次レビュー金曜16時 — そのままにする？動かす？", action: "そのまま" },
-      { who: "anna", bg: "var(--accent-pink)", text: "陳さんの契約12日後に更新 — 更新案を作りますか？", action: "はい" },
+      { who: "kai", bg: "var(--accent-blue)", text: "返信下書き8件 · チャージバック1件をフラグ", action: "確認" },
+      { who: "kai", bg: "var(--accent-blue)", text: "stripe:昨夜2件の更新失敗 — リカバリー文下書き済", action: "送信" },
+      { who: "anna", bg: "var(--accent-pink)", text: "返金ポリシー更新を下書き(今月30日条項の請求3件目)", action: "承認" },
+      { who: "oliver", bg: "var(--accent-green)", text: "github:新規issue4件をトリアージ、1件は判断要", action: "開く" },
+      { who: "anna", bg: "var(--accent-pink)", text: "ドメインkairosaitech.comが7日後に更新 — カードは4日後に期限切れ", action: "対応" },
     ],
   },
   office: {
     eyebrow: "▶ 空間オフィス",
-    // TODO(i18n): office scenes rewritten for US indie-SaaS scenarios
-    // (refund policy / chargeback). ja copy retains the original
-    // contractor-NDA scenarios — translator pass to align.
     headlineLines: ["チームが働く姿を見る。", "チャットログではなく。"],
     body: "3つのデスク。3人のキャラクター。一目で見渡せるシーン。デスクにホバーすると、今何をしているか見えます。Annaが書類をOliverに渡し、Kaiはあなたが必要なときに点滅します。",
     states: [
@@ -169,20 +164,20 @@ export const ja: Dict = {
     mockTag: "オフィス · ライブ",
     mockOnline: "● 3人オンライン",
     desks: [
-      { name: "ANNA", label: "NDA下書き中", state: "working", color: "var(--accent-pink)" },
+      { name: "ANNA", label: "返金ポリシー下書き中", state: "working", color: "var(--accent-pink)" },
       { name: "OLIVER", label: "進行中", state: "idle", color: "var(--accent-green)" },
-      { name: "KAI", label: "あなた待ち", state: "waiting", color: "var(--accent-red)" },
+      { name: "KAI", label: "あなた待ち — チャージバック", state: "waiting", color: "var(--accent-red)" },
     ],
     handoffs: [
-      { from: "ANNA", to: "OLIVER", msg: "林さんのNDA → 追跡チケット作成" },
-      { from: "KAI", to: "あなた", msg: "お客様が法的措置に言及 — 確認をお願いします" },
+      { from: "ANNA", to: "OLIVER", msg: "返金ポリシー → 告知スケジュール" },
+      { from: "KAI", to: "あなた", msg: "$499顧客のチャージバック — 確認をお願いします" },
     ],
   },
   how: {
     eyebrow: "▶ 仕組み",
     headlineLines: ["雇うのに5分。", "毎日5分で運営。"],
     steps: [
-      { n: "01", title: "接続", body: "gmail · slack · google calendar · drive · stripe（読み取り専用）。手書きOAuth、想定外のスコープは要求しません。" },
+      { n: "01", title: "接続", body: "gmail · stripe · github · slack · discord · calendar · drive。手書きOAuth、想定外のスコープは要求しません。" },
       { n: "02", title: "紹介", body: "3分でOliverにあなたのビジネスを伝える。ブランドの声、お客様の種類、業務委託先、技術スタック。彼がAnnaとKaiにブリーフします。" },
       { n: "03", title: "下書き", body: "チームは夜のうちに働きます。受信箱の仕分け、契約のキュー、FAQ更新案。あなたの承認なしには何も送信されません。" },
       { n: "04", title: "承認", body: "朝8時にアプリを開く。スタンドアップをタップで進める。コーヒー片手に。チームがオフィスで動き、あなたは出荷する。" },
@@ -190,35 +185,32 @@ export const ja: Dict = {
   },
   pricing: {
     eyebrow: "▶ 料金",
-    // TODO(i18n): pricing restructured for US launch (Free / Solo $89 / Studio
-    // $199+$29). Japanese pricing/positioning is a separate decision —
-    // leaving English copy in place until that pass.
     headlineLines: [
-      "pick a tier.",
-      "start the trial.",
-      "no card.",
+      "プランを選ぶ。",
+      "トライアル開始。",
+      "カード不要。",
     ],
-    body: "Full team for 14 days. Drops to free, never disappears. The team is there when you come back.",
+    body: "14日間フルチーム。その後は無料、消えません。あなたが戻ってきたとき、チームはそこにいます。",
     billing: {
-      monthlyLabel: "monthly",
-      annualLabel: "annual -20%",
+      monthlyLabel: "月額",
+      annualLabel: "年額 -20%",
     },
     tiers: [
       {
         id: "free",
-        name: "free",
+        name: "無料",
         bg: "var(--panel)",
         accent: "var(--foreground)",
-        monthly: { price: "$0", sub: "/forever" },
-        annual: { price: "$0", sub: "/forever" },
-        pitch: "oliver only",
+        monthly: { price: "$0", sub: "/永久" },
+        annual: { price: "$0", sub: "/永久" },
+        pitch: "oliverのみ",
         features: [
           { glyph: "✓", text: "oliver" },
-          { glyph: "✓", text: "1 inbox" },
-          { glyph: "✓", text: "50 actions / mo" },
-          { glyph: "✗", text: "no stand-up" },
+          { glyph: "✓", text: "受信箱1つ" },
+          { glyph: "✓", text: "月50アクション" },
+          { glyph: "✗", text: "スタンドアップなし" },
         ],
-        cta: "start free",
+        cta: "無料で始める",
         ctaHref: "#waitlist",
       },
       {
@@ -226,88 +218,86 @@ export const ja: Dict = {
         name: "solo",
         bg: "var(--accent-yellow)",
         accent: "var(--ink-on-accent)",
-        monthly: { price: "$89", sub: "/month" },
-        annual: { price: "$852", sub: "/year", note: "$71 / mo · save 20%" },
-        pitch: "for the company-of-one",
+        monthly: { price: "$89", sub: "/月" },
+        annual: { price: "$852", sub: "/年", note: "$71 / 月 · 20%お得" },
+        pitch: "一人会社のために",
         features: [
-          { glyph: "✓", text: "full team — anna + kai + oliver" },
-          { glyph: "✓", text: "daily stand-up" },
-          { glyph: "✓", text: "spatial office" },
-          { glyph: "✓", text: "all integrations" },
-          { glyph: "✓", text: "multilingual" },
-          { glyph: "✓", text: "email support" },
+          { glyph: "✓", text: "フルチーム — anna + kai + oliver" },
+          { glyph: "✓", text: "毎朝のスタンドアップ" },
+          { glyph: "✓", text: "空間オフィス" },
+          { glyph: "✓", text: "すべての連携" },
+          { glyph: "✓", text: "多言語対応" },
+          { glyph: "✓", text: "メールサポート" },
         ],
-        cta: "start trial",
+        cta: "トライアル開始",
         ctaHref: "#waitlist",
         highlight: true,
-        badge: "▶ start here",
+        badge: "▶ ここから",
       },
       {
         id: "studio",
         name: "studio",
         bg: "var(--panel)",
         accent: "var(--foreground)",
-        monthly: { price: "$199", sub: "/month" },
-        annual: { price: "$1,908", sub: "/year", note: "$159 / mo · save 20%" },
-        addon: "+ $29 / seat",
-        pitch: "for small teams",
+        monthly: { price: "$199", sub: "/月" },
+        annual: { price: "$1,908", sub: "/年", note: "$159 / 月 · 20%お得" },
+        addon: "+ $29 / 席",
+        pitch: "小規模チーム向け",
         features: [
-          { glyph: "✓", text: "everything in solo" },
-          { glyph: "✓", text: "unlimited actions" },
-          { glyph: "✓", text: "contractor management" },
-          { glyph: "✓", text: "API access" },
-          { glyph: "✓", text: "priority support" },
-          { glyph: "✓", text: "add seats as you grow" },
+          { glyph: "✓", text: "soloのすべて" },
+          { glyph: "✓", text: "アクション無制限" },
+          { glyph: "✓", text: "業務委託管理" },
+          { glyph: "✓", text: "APIアクセス" },
+          { glyph: "✓", text: "優先サポート" },
+          { glyph: "✓", text: "成長に合わせて席を追加" },
         ],
-        cta: "start trial",
+        cta: "トライアル開始",
         ctaHref: "#waitlist",
       },
     ],
-    footnote: "14 days, full team, no card. drops to free if you don't upgrade.",
-    enterprise: { text: "larger team? talk to us →", href: "mailto:hello@kairos.ai" },
+    footnote: "14日間、フルチーム、カード不要。アップグレードしなければ自動で無料へ。",
+    enterprise: { text: "大きなチーム?ご相談ください →", href: "mailto:hello@kairos.ai" },
   },
   faq: {
     eyebrow: "▶ よくある質問",
-    headlineLines: ["デモで", "ファウンダーが", "聞く質問。"],
+    headlineLines: ["独立ファウンダーが", "トライアル前に", "聞く質問。"],
     qLabel: "Q.",
     aLabel: "A.",
-    // TODO(i18n): FAQ rewritten for the US indie-SaaS beachhead. Mirrors EN
-    // until a native ja translator passes over the new copy.
     items: [
       {
-        q: "how is this different from ChatGPT or Claude with a prompt?",
-        a: "the daily stand-up and spatial office. the model is just claude underneath — what's different is that the team remembers you, hands off to each other, and shows up at 8am whether you do or not.",
+        q: "ChatGPTやClaudeにプロンプトを与えるのと、何が違いますか?",
+        a: "毎朝のスタンドアップと空間オフィスです。モデル自体はClaudeを使っています — 違うのは、チームがあなたを覚え、互いに引き継ぎ、あなたが開こうが開くまいが朝8時に現れることです。",
       },
       {
-        q: "does it work with GitHub / Stripe / Discord?",
-        a: "yes. github issue triage, stripe failed-charge recovery, discord read+draft. gmail and slack too. full list at /integrations.",
+        q: "GitHub / Stripe / Discordで動きますか?",
+        a: "はい。githubのissueトリアージ、stripeの決済失敗リカバリー、discordの読み取り+下書き。gmailとslackも対応。完全なリストは /integrations にあります。",
       },
       {
-        q: "do the agents do things without asking?",
-        a: "no. you approve every send, every policy update, every escalation. trusted-action mode comes later for users who want it.",
+        q: "エージェントは勝手に動きますか?",
+        a: "いいえ。送信、ポリシー更新、エスカレーション、すべてあなたが承認します。信頼済みアクションモードは、希望するユーザー向けに後ほど提供します。",
       },
       {
-        q: "what's the 14-day trial — is there a card?",
-        a: "no card. full team for 14 days. on day 15, anna and kai head out and you drop to oliver-only free forever. team's there when you're ready to come back.",
+        q: "14日間トライアルにカードは必要?",
+        a: "カード不要。14日間フルチーム。15日目にAnnaとKaiは退場、Oliverだけの永久無料プランに自動で切り替わります。戻る準備ができたら、チームはそこにいます。",
       },
       {
-        q: "what happens if i leave it alone for a week?",
-        a: "oliver keeps drafting, nothing gets sent. when you come back, the stand-up summarizes the week instead of a single morning.",
+        q: "1週間放置したらどうなりますか?",
+        a: "Oliverは下書きを続けますが、何も送信されません。戻ったとき、スタンドアップは一日分ではなく一週間分をまとめて報告します。",
       },
       {
-        q: "where does my data live?",
-        a: "model calls to anthropic. your data in postgres on aws us-east-1. SOC 2 in progress. full details at /security.",
+        q: "データはどこに保管されますか?",
+        a: "モデル呼び出しはanthropicへ。データはAWS us-east-1のpostgresに。SOC 2は進行中。詳細は /security にあります。",
       },
       {
-        q: "what's on the roadmap?",
-        a: "v2: finance + growth coworkers, voice replies, mobile app, deeper github + linear integrations.",
+        q: "ロードマップは?",
+        a: "v2:財務+成長の同僚、音声返信、モバイルアプリ、github + linearとのより深い連携。",
       },
     ],
   },
   cta: {
     eyebrow: "▶ ベータに参加",
-    headlineLines: ["ファウンダー", "募集。", "先着100名。"],
-    body: "3ヶ月無料。週30分のフィードバック通話。あなたが3人の同僚を形作るのを手伝い、私たちはあなたの受信箱を片付けます。",
+    headlineLines: ["独立ファウンダー", "募集。", "先着100名。"],
+    body: "14日間フルチームトライアル。ご希望なら30分のオンボーディング通話。3人の同僚を一緒に形作りながら、私たちは受信箱を片付けます。",
     emailLabel: "メール",
     emailPlaceholder: "you@your-startup.com",
     submit: "▶ アクセス申請",
@@ -319,9 +309,8 @@ export const ja: Dict = {
       { href: "#team", label: "チーム" },
       { href: "#pricing", label: "料金" },
       { href: "#faq", label: "FAQ" },
-      // TODO(i18n): translate /integrations and /security labels.
-      { href: "/integrations", label: "integrations" },
-      { href: "/security", label: "security" },
+      { href: "/integrations", label: "連携" },
+      { href: "/security", label: "セキュリティ" },
       { href: "mailto:hello@kairos.ai", label: "お問い合わせ" },
     ],
     crtOn: "crt: オン",
