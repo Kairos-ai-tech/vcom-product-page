@@ -314,8 +314,13 @@ export const ja: Dict = {
       { href: "#team", label: "チーム" },
       { href: "#pricing", label: "料金" },
       { href: "#faq", label: "FAQ" },
+      // TODO(i18n): translate /integrations and /security labels.
+      { href: "/integrations", label: "integrations" },
+      { href: "/security", label: "security" },
       { href: "mailto:hello@kairos.ai", label: "お問い合わせ" },
     ],
+    crtOn: "crt: オン",
+    crtOff: "crt: オフ",
     copyright: "© 2026 kairos.ai · game over? press start",
   },
 };

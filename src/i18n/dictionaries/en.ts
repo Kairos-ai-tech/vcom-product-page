@@ -301,13 +301,17 @@ export const en: Dict = {
     fineprint: "no spam. quarterly note while we build. unsubscribe in one click.",
   },
   footer: {
-    tagline: "a product by kairos.ai · for solo founders everywhere",
+    tagline: "a product by kairos.ai · for the company-of-one",
     links: [
       { href: "#team", label: "team" },
       { href: "#pricing", label: "pricing" },
       { href: "#faq", label: "faq" },
+      { href: "/integrations", label: "integrations" },
+      { href: "/security", label: "security" },
       { href: "mailto:hello@kairos.ai", label: "contact" },
     ],
+    crtOn: "crt: on",
+    crtOff: "crt: off",
     copyright: "© 2026 kairos.ai · game over? press start",
   },
 };

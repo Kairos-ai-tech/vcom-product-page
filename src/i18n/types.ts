@@ -95,7 +95,12 @@ export type Dict = {
   };
   footer: {
     tagline: string;
+    // SiteFooter prepends /<locale> to any href that starts with "/" so
+    // the dict stays locale-agnostic. mailto:, #anchor, and absolute URLs
+    // are passed through unchanged.
     links: { href: string; label: string }[];
+    crtOn: string; // label when the CRT overlay is on
+    crtOff: string; // label when it's off
     copyright: string;
   };
 };

@@ -314,8 +314,13 @@ export const zhTW: Dict = {
       { href: "#team", label: "團隊" },
       { href: "#pricing", label: "方案" },
       { href: "#faq", label: "FAQ" },
+      // TODO(i18n): translate /integrations and /security labels.
+      { href: "/integrations", label: "integrations" },
+      { href: "/security", label: "security" },
       { href: "mailto:hello@kairos.ai", label: "聯絡" },
     ],
+    crtOn: "crt: 開",
+    crtOff: "crt: 關",
     copyright: "© 2026 kairos.ai · game over? press start",
   },
 };
