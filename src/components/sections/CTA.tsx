@@ -27,38 +27,56 @@ export function CTA({ dict }: Props) {
             {dict.body}
           </p>
 
+          {/* Email signup styled as a terminal login: prompt prefix +
+              blinking caret on the placeholder makes the input read as
+              an actual command line, not a generic form field. */}
           <form
-            className="mt-6 flex flex-col gap-3 sm:flex-row"
+            className="mt-6 max-w-xl border-[var(--pixel)] border-[var(--panel-border)] p-3"
+            style={{ background: "var(--sim-screen)" }}
             action="#"
             method="post"
             onSubmit={(e) => {
-              // Form is a stub today — intercept so we fire analytics
-              // and don't navigate the page on submit.
               e.preventDefault();
               const fd = new FormData(e.currentTarget);
               const email = String(fd.get("email") ?? "");
               track("signup_clicked", { source: "waitlist", hasEmail: email.length > 0 });
             }}
           >
-            <label htmlFor="email" className="sr-only">
-              {dict.emailLabel}
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              placeholder={dict.emailPlaceholder}
-              className="w-full max-w-md border-[var(--pixel)] border-[var(--panel-border)] bg-[var(--background)] px-3 py-3 font-mono text-base text-[var(--foreground)] placeholder:text-[var(--foreground)]/50 focus:outline-none"
-              style={{ borderRadius: 0 }}
-            />
-            <button
-              type="submit"
-              className="pixel-button active:pixel-button-press"
-              style={{ background: "var(--accent-green)" }}
-            >
-              {dict.submit}
-            </button>
+            <p className="font-body text-[10px] tracking-[0.18em] uppercase text-[var(--background)]/60">
+              vcom · waitlist.sh
+            </p>
+            <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-stretch">
+              <div className="flex flex-1 items-center gap-2 border-[calc(var(--pixel)/2)] border-[var(--background)]/30 bg-[var(--sim-screen-soft)] px-3 py-2">
+                <span className="font-body text-[var(--accent-green)]" aria-hidden>
+                  &gt;
+                </span>
+                <label htmlFor="email" className="sr-only">
+                  {dict.emailLabel}
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder={dict.emailPlaceholder}
+                  className="font-mono w-full bg-transparent text-base text-[var(--background)] placeholder:text-[var(--background)]/40 focus:outline-none"
+                  style={{ borderRadius: 0 }}
+                />
+                <span aria-hidden className="anim-cursor text-[var(--accent-green)]">
+                  ▌
+                </span>
+              </div>
+              <button
+                type="submit"
+                className="pixel-button active:pixel-button-press"
+                style={{ background: "var(--accent-green)" }}
+              >
+                {dict.submit}
+              </button>
+            </div>
+            <p className="font-body mt-2 text-[10px] text-[var(--background)]/50">
+              [ok] press enter to submit · status: ready
+            </p>
           </form>
 
           <p className="font-body mt-3 text-xs text-[var(--ink-on-accent)]/80">
