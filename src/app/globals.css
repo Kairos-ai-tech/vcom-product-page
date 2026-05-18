@@ -17,20 +17,29 @@
   --ink-on-accent: #1a1530;
   --pixel: 4px;
 
-  /* Top-down sim palette — used by OfficeSprites and the spatial scenes.
-     Surfaced here so per-room floor/wood/screen colours stay coherent
-     across hero, /office, and any future scene. */
+  /* Top-down ¾ overworld palette — anchored on GBA-era Pokémon
+     (R/S/E, FR/LG). Soft pastel floors, mid-saturation walls, warm
+     wood. Each character's "room" is a tinted floor; the diamond
+     checker pattern in OfficeSprites overlays this base. */
   --sim-wall: #2a2335;
-  --sim-corridor: #3a2a1a;
-  --sim-floor-anna: #4a5468;
-  --sim-floor-oliver: #4d5a55;
-  --sim-floor-kai: #6a5847;
-  --sim-wood: #7a3f1a;
-  --sim-wood-light: #a05a2a;
-  --sim-screen: #0e1830;
-  --sim-screen-soft: #1a2540;
-  --sim-metal: #9aa5b8;
-  --sim-metal-light: #cdd2dc;
+  --sim-corridor: #b6c3a3;
+  --sim-floor-anna: #d6c7d8;
+  --sim-floor-anna-diag: #b89cbe;
+  --sim-floor-oliver: #c7d6c4;
+  --sim-floor-oliver-diag: #9dbc9d;
+  --sim-floor-kai: #e0cfb0;
+  --sim-floor-kai-diag: #c1a878;
+  --sim-wood: #b07840;
+  --sim-wood-light: #d49a5a;
+  --sim-wood-dark: #6a3f1a;
+  --sim-counter: #f0e8d4;
+  --sim-counter-edge: #b4a380;
+  --sim-screen: #2a3a5a;
+  --sim-screen-soft: #5a78a8;
+  --sim-metal: #c0c8d4;
+  --sim-metal-light: #e2e6ec;
+  --sim-grass: #6aaa3a;
+  --sim-grass-dark: #3a7a1a;
 }
 
 @theme inline {

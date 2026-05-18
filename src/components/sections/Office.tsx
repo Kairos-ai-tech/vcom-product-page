@@ -81,9 +81,11 @@ function OfficeScene({ dict }: { dict: Dict["office"] }) {
                 name={d.name}
                 accent={CHAR_ACCENT[d.name]}
                 floor={palette.floor}
+                floorDiag={palette.floorDiag}
                 label={d.label}
                 state={d.state}
                 monitorColors={palette.monitorColors}
+                shelves={palette.shelves}
               />
             </li>
           );

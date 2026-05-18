@@ -1,15 +1,11 @@
 import { Room, Corridor, ROOM_PALETTE, CHAR_ACCENT } from "@/components/OfficeSprites";
 
-// Hero scene — top-down floorplan of the vcom office. Three rooms in a
-// row (Anna · Kai · Oliver), each rendered as a packed workplace
-// diorama: workstation with four monitors, office chair, seated
-// character, filing cabinet, printer table, whiteboard on the back
-// wall, potted plant and trash bin in the corners. A corridor strip
-// below the rooms holds cacti.
-//
-// A document sprite travels from Anna's room toward Oliver's on a ~6s
-// loop, representing the morning handoff. Motion uses CSS keyframes
-// and respects the global prefers-reduced-motion rule.
+// Hero scene — top-down ¾ overworld view of the vcom office. Three
+// rooms in a row (Anna · Kai · Oliver), each with a diamond-checker
+// floor, a back-wall counter strip with shelves, a workstation, the
+// seated character, and side props. A grass corridor with tufts and
+// cacti sits below. A document sprite travels left-to-right on a ~6s
+// loop, representing the morning handoff.
 
 type Props = { ariaLabel: string };
 
@@ -19,32 +15,38 @@ export function HeroOffice({ ariaLabel }: Props) {
       role="img"
       aria-label={ariaLabel}
       className="pixel-panel-lg scanlines relative w-full overflow-hidden p-3 sm:p-4"
-      style={{ background: "#2a2335" }}
+      style={{ background: "var(--sim-wall)" }}
     >
       <div className="grid gap-2 sm:grid-cols-3">
         <Room
           name="ANNA"
           accent={CHAR_ACCENT.ANNA}
           floor={ROOM_PALETTE.ANNA.floor}
+          floorDiag={ROOM_PALETTE.ANNA.floorDiag}
           label="refund policy"
           state="working"
           monitorColors={ROOM_PALETTE.ANNA.monitorColors}
+          shelves={ROOM_PALETTE.ANNA.shelves}
         />
         <Room
           name="KAI"
           accent={CHAR_ACCENT.KAI}
           floor={ROOM_PALETTE.KAI.floor}
+          floorDiag={ROOM_PALETTE.KAI.floorDiag}
           label="needs you"
           state="waiting"
           monitorColors={ROOM_PALETTE.KAI.monitorColors}
+          shelves={ROOM_PALETTE.KAI.shelves}
         />
         <Room
           name="OLIVER"
           accent={CHAR_ACCENT.OLIVER}
           floor={ROOM_PALETTE.OLIVER.floor}
+          floorDiag={ROOM_PALETTE.OLIVER.floorDiag}
           label="facilitating"
           state="idle"
           monitorColors={ROOM_PALETTE.OLIVER.monitorColors}
+          shelves={ROOM_PALETTE.OLIVER.shelves}
         />
       </div>
 
@@ -52,9 +54,8 @@ export function HeroOffice({ ariaLabel }: Props) {
         <Corridor count={5} />
       </div>
 
-      {/* Document in transit — travels left-to-right just below the
-          rooms across the top of the corridor strip. */}
-      <span aria-hidden className="hero-doc pointer-events-none absolute top-[44%] left-[14%] z-30">
+      {/* Document in transit — travels left-to-right across the corridor */}
+      <span aria-hidden className="hero-doc pointer-events-none absolute bottom-[5%] left-[14%] z-30">
         <Doc />
       </span>
     </div>
