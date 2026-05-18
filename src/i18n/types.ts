@@ -13,22 +13,24 @@ export type Dict = {
   };
   hero: {
     eyebrow: string;
-    headlineLines: [string, string, string]; // 3 lines, last is highlighted
-    body: string;
-    bullets: [string, string, string];
+    // Two-line lowercase headline. Split on "/" in the spec —
+    // rendered as two stacked lines, last with a yellow marker.
+    headlineLines: [string, string];
+    subhead: string;
+    // Three short feature lines, each gets a ► marker.
+    features: [string, string, string];
     primaryCta: string;
+    primaryCtaNote: string; // small text under the CTA, e.g. "no card"
     secondaryCta: string;
-    fineprint: string;
-    boardTag: string;
-    boardSub: string;
-    boardCaption: string; // teaser line under the tiles, oliver →
+    trustLine: string;
+    sceneAria: string; // a11y label for the animated office scene
   };
   marquee: string[];
   insight: {
     eyebrow: string;
-    headlineParts: { line1: string; line2: string; emphasis: string; rest: string };
-    paragraphs: [string, string, string];
-    highlight: string; // inline yellow-marker phrase inside paragraph 2
+    headlineLines: [string, string]; // sentence 1, sentence 2 — rendered on separate lines
+    paragraph: string; // one paragraph, no bullets
+    callout: string; // quote-sized pull-out beside the paragraph
   };
   team: {
     eyebrow: string;
@@ -69,8 +71,13 @@ export type Dict = {
     eyebrow: string;
     headlineLines: [string, string, string];
     body: string;
-    mostChosen: string;
+    billing: {
+      monthlyLabel: string;
+      annualLabel: string; // includes the -20% bit, e.g. "annual -20%"
+    };
     tiers: PricingTier[];
+    footnote: string;
+    enterprise: { text: string; href: string };
   };
   faq: {
     eyebrow: string;
@@ -90,7 +97,12 @@ export type Dict = {
   };
   footer: {
     tagline: string;
+    // SiteFooter prepends /<locale> to any href that starts with "/" so
+    // the dict stays locale-agnostic. mailto:, #anchor, and absolute URLs
+    // are passed through unchanged.
     links: { href: string; label: string }[];
+    crtOn: string; // label when the CRT overlay is on
+    crtOff: string; // label when it's off
     copyright: string;
   };
 };
@@ -107,13 +119,21 @@ export type TeamCard = {
 };
 
 export type PricingTier = {
+  id: "free" | "solo" | "studio";
   name: string;
-  price: string;
-  sub: string;
+  // Two displayed forms so the monthly/annual toggle is a pure data swap —
+  // no math in the component, translators control formatting per locale.
+  monthly: { price: string; sub: string; note?: string };
+  annual: { price: string; sub: string; note?: string };
+  // Optional add-on line, rendered on a row of its own (e.g. "+ $29 / seat").
+  addon?: string;
   pitch: string;
-  features: string[];
+  // Each feature carries its own glyph so a tier can mix ✓ and ✗.
+  features: { glyph: "✓" | "✗"; text: string }[];
   cta: string;
+  ctaHref?: string;
   bg: string;
   accent: string;
   highlight?: boolean;
+  badge?: string; // small "▶ start here" style ribbon, only on the lead tier
 };

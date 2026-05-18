@@ -1,9 +1,22 @@
 import { Minifig } from "@/components/Minifig";
+import {
+  Room,
+  Corridor,
+  ROOM_PALETTE,
+  CHAR_ACCENT,
+} from "@/components/OfficeSprites";
 import type { Dict } from "@/i18n/types";
 
 type Props = { dict: Dict["office"] };
 
-const stateColors = ["var(--accent-blue)", "var(--accent-yellow)", "var(--accent-red)", "var(--accent-green)"];
+// State legends below the scene use the same colour vocabulary as the
+// tags on the desks, so the eye links them without text doing the work.
+const stateColors = [
+  "var(--accent-blue)",
+  "var(--accent-yellow)",
+  "var(--accent-red)",
+  "var(--accent-green)",
+];
 
 export function Office({ dict }: Props) {
   const [l1, l2] = dict.headlineLines;
@@ -12,42 +25,36 @@ export function Office({ dict }: Props) {
       id="office"
       className="border-b-[var(--pixel)] border-[var(--panel-border)]"
     >
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-[1.3fr_1fr]">
-        <OfficeMock dict={dict} />
-        <div className="flex flex-col justify-center gap-5">
+      <div className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-10 max-w-2xl">
           <p className="eyebrow text-[var(--accent-pink)]">{dict.eyebrow}</p>
-          <h2 className="font-display text-2xl sm:text-3xl">
+          <h2 className="font-display mt-3 text-2xl sm:text-4xl">
             {l1} <br /> {l2}
           </h2>
-          <p className="font-body text-[var(--foreground)]/85">{dict.body}</p>
-          <ul className="font-body grid gap-2 text-sm">
-            {dict.states.map((s, i) => {
-              const [head, ...rest] = s.split(" — ");
-              return (
-                <li key={s}>
-                  ► <span style={{ color: stateColors[i] }}>{head}</span>
-                  {rest.length ? <> — {rest.join(" — ")}</> : null}
-                </li>
-              );
-            })}
-          </ul>
-          <p className="font-body text-sm text-[var(--foreground)]/70">
-            {dict.coda}
+          <p className="font-body mt-4 text-[var(--foreground)]/85">
+            {dict.body}
           </p>
         </div>
+
+        <OfficeScene dict={dict} />
+
+        <StateLegends states={dict.states} />
+
+        <p className="font-body mt-6 text-center text-sm text-[var(--foreground)]/70">
+          {dict.coda}
+        </p>
       </div>
     </section>
   );
 }
 
-function OfficeMock({ dict }: { dict: Dict["office"] }) {
+function OfficeScene({ dict }: { dict: Dict["office"] }) {
   return (
     <div
-      className="pixel-panel-lg scanlines relative overflow-hidden p-6"
-      style={{
-        background:
-          "linear-gradient(180deg, var(--accent-blue) 0 60%, #5b3a1f 60% 100%)",
-      }}
+      role="region"
+      aria-label="vcom spatial office — top-down view, three rooms"
+      className="pixel-panel-lg scanlines relative overflow-hidden p-4 sm:p-6"
+      style={{ background: "#2a2335" }}
     >
       <div className="mb-4 flex items-center justify-between">
         <span className="pixel-tag" style={{ background: "var(--accent-yellow)" }}>
@@ -58,36 +65,39 @@ function OfficeMock({ dict }: { dict: Dict["office"] }) {
         </span>
       </div>
 
-      <ul className="grid grid-cols-3 gap-3">
-        {dict.desks.map((d, i) => (
-          <li
-            key={d.name}
-            className={`pixel-panel pixel-hover-lift anim-pop-in delay-${i + 1} flex flex-col items-center gap-2 bg-[var(--panel)] p-3`}
-          >
-            <Minifig name={d.name} size={48} state={d.state} />
-            <Desk />
-            <p className="text-[9px] tracking-[0.2em] text-[var(--foreground)]">
-              {d.name}
-            </p>
-            <span
-              className={`pixel-tag ${d.state === "waiting" ? "anim-glow" : ""}`}
-              style={{ background: d.color, color: "var(--ink-on-accent)" }}
+      {/* Three rooms in a row, separated by the dark wall colour bleeding
+          through the gap. Stacks to a single column on small screens. */}
+      <ul className="grid gap-3 sm:grid-cols-3">
+        {dict.desks.map((d) => {
+          const palette = ROOM_PALETTE[d.name];
+          return (
+            <li
+              key={d.name}
+              tabIndex={0}
+              aria-label={`${d.name}, ${d.state}: ${d.label}`}
+              className="anim-pop-in focus:outline-none focus-visible:ring-[var(--pixel)] focus-visible:ring-[var(--accent-blue)]"
             >
-              {d.label}
-            </span>
-          </li>
-        ))}
+              <Room
+                name={d.name}
+                accent={CHAR_ACCENT[d.name]}
+                floor={palette.floor}
+                floorDiag={palette.floorDiag}
+                label={d.label}
+                state={d.state}
+                monitorColors={palette.monitorColors}
+                shelves={palette.shelves}
+              />
+            </li>
+          );
+        })}
       </ul>
 
-      <div
-        className="mt-5 h-[var(--pixel)] w-full"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(90deg, var(--panel-border) 0 var(--pixel), transparent var(--pixel) calc(var(--pixel) * 4))",
-        }}
-      />
+      {/* Corridor band with cacti — the connective space between rooms. */}
+      <div className="mt-3">
+        <Corridor count={6} />
+      </div>
 
-      <div className="mt-5 grid gap-2">
+      <div className="mt-6 grid gap-2">
         {dict.handoffs.map((h, i) => (
           <Handoff
             key={h.msg}
@@ -103,21 +113,59 @@ function OfficeMock({ dict }: { dict: Dict["office"] }) {
   );
 }
 
-function Desk() {
+function StateLegends({ states }: { states: string[] }) {
   return (
-    <svg
-      viewBox="0 0 16 6"
-      width="56"
-      height="22"
-      shapeRendering="crispEdges"
-      aria-hidden
+    <ul
+      aria-label="character state legend"
+      className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
     >
-      <rect x="3" y="0" width="10" height="3" fill="var(--panel-border)" />
-      <rect x="4" y="1" width="8" height="1" fill="var(--accent-green)" />
-      <rect x="0" y="3" width="16" height="2" fill="#7a3f1a" />
-      <rect x="0" y="5" width="3" height="1" fill="var(--panel-border)" />
-      <rect x="13" y="5" width="3" height="1" fill="var(--panel-border)" />
-    </svg>
+      {states.map((s, i) => {
+        const [head, ...rest] = s.split(" — ");
+        return (
+          <li
+            key={s}
+            className="pixel-panel flex items-center gap-3 bg-[var(--panel)] p-3"
+          >
+            <StateDemo index={i} />
+            <div className="font-body flex flex-col text-sm">
+              <span
+                className="text-xs uppercase tracking-[0.2em]"
+                style={{ color: stateColors[i] }}
+              >
+                {head}
+              </span>
+              {rest.length > 0 && (
+                <span className="text-[var(--foreground)]/75">
+                  {rest.join(" — ")}
+                </span>
+              )}
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function StateDemo({ index }: { index: number }) {
+  if (index === 3) {
+    return (
+      <span className="flex shrink-0 items-end gap-1">
+        <Minifig name="ANNA" size={28} state="working" />
+        <Minifig name="OLIVER" size={28} state="working" />
+      </span>
+    );
+  }
+  const map: { name: "ANNA" | "KAI" | "OLIVER"; state: "idle" | "working" | "waiting" }[] = [
+    { name: "OLIVER", state: "idle" },
+    { name: "ANNA", state: "working" },
+    { name: "KAI", state: "waiting" },
+  ];
+  const cfg = map[index];
+  return (
+    <span className="shrink-0">
+      <Minifig name={cfg.name} size={36} state={cfg.state} />
+    </span>
   );
 }
 

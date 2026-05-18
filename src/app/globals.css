@@ -16,6 +16,30 @@
 
   --ink-on-accent: #1a1530;
   --pixel: 4px;
+
+  /* Top-down ¾ overworld palette — anchored on GBA-era Pokémon
+     (R/S/E, FR/LG). Soft pastel floors, mid-saturation walls, warm
+     wood. Each character's "room" is a tinted floor; the diamond
+     checker pattern in OfficeSprites overlays this base. */
+  --sim-wall: #2a2335;
+  --sim-corridor: #b6c3a3;
+  --sim-floor-anna: #d6c7d8;
+  --sim-floor-anna-diag: #b89cbe;
+  --sim-floor-oliver: #c7d6c4;
+  --sim-floor-oliver-diag: #9dbc9d;
+  --sim-floor-kai: #e0cfb0;
+  --sim-floor-kai-diag: #c1a878;
+  --sim-wood: #b07840;
+  --sim-wood-light: #d49a5a;
+  --sim-wood-dark: #6a3f1a;
+  --sim-counter: #f0e8d4;
+  --sim-counter-edge: #b4a380;
+  --sim-screen: #2a3a5a;
+  --sim-screen-soft: #5a78a8;
+  --sim-metal: #c0c8d4;
+  --sim-metal-light: #e2e6ec;
+  --sim-grass: #6aaa3a;
+  --sim-grass-dark: #3a7a1a;
 }
 
 @theme inline {
@@ -274,6 +298,25 @@ body {
 .anim-blink { animation: pixel-blink 2.4s steps(4, end) infinite; }
 .anim-cursor { animation: pixel-cursor 1s steps(1, end) infinite; }
 
+/* Optional full-page CRT scanline overlay. Toggled by ScanlinesToggle —
+   the toggle adds `.crt-on` to <body>. Sits above content but below
+   modals/fixed UI (z-index keeps it under z-20 nav). */
+.crt-on::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 15;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(26, 21, 48, 0) 0,
+    rgba(26, 21, 48, 0) calc(var(--pixel) * 1),
+    rgba(26, 21, 48, 0.07) calc(var(--pixel) * 1),
+    rgba(26, 21, 48, 0.07) calc(var(--pixel) * 2)
+  );
+  mix-blend-mode: multiply;
+}
+
 /* Faint CRT scanline overlay used on hero "screen" surfaces. */
 .scanlines {
   position: relative;
@@ -350,6 +393,21 @@ body {
   40%, 60% { opacity: 1; transform: scale(1); }
 }
 
+/* Hero scene: document sprite walks from Anna's desk (~16% from left)
+   to Oliver's desk (~72% from left), then resets. Pixel-stepped so
+   the doc reads like a sprite hopping across, not a smooth glide. */
+@keyframes hero-doc-walk {
+  0%, 8%   { transform: translateX(0); opacity: 1; }
+  45%      { transform: translateX(220%); opacity: 1; }
+  55%, 75% { transform: translateX(440%); opacity: 1; }
+  82%      { transform: translateX(440%); opacity: 0; }
+  100%     { transform: translateX(0); opacity: 0; }
+}
+
+.hero-doc {
+  animation: hero-doc-walk 6s steps(20, end) infinite;
+}
+
 @keyframes pixel-state-cycle {
   /* Used to cycle the office mock through idle/working/waiting frames
      so the scene reads as alive even without a websocket. Pure CSS
@@ -417,8 +475,11 @@ body {
   .anim-rainbow,
   .anim-coin,
   .anim-sparkle,
+  .hero-doc,
   .marquee-track {
     animation: none !important;
   }
   .anim-pop-in { opacity: 1; transform: none; }
+  /* Park the document at Anna's desk so the scene composes statically. */
+  .hero-doc { transform: none; opacity: 1; }
 }
