@@ -1,16 +1,14 @@
-import { Minifig } from "@/components/Minifig";
+import { Room, Corridor, Cactus, ROOM_PALETTE, CHAR_ACCENT } from "@/components/OfficeSprites";
 
-// Animated hero scene — three desks left-to-right (Anna · Kai · Oliver),
-// a document sprite that travels from Anna's desk to Oliver's on a
-// ~6-second loop (representing the morning handoff), a "needs you"
-// pulse over Kai, and small set-dressing: a potted plant in the
-// corner, coffee mug on Anna's desk, retro CRT monitor on Oliver's.
+// Hero scene — top-down floorplan of the vcom office. Three rooms in a
+// row (Anna · Kai · Oliver), each with a workstation viewed from above,
+// a chair, the character seated at the desk, and a status label. A
+// corridor strip below the rooms holds cacti for set dressing.
 //
-// Implementation deliberately stays in plain SVG + CSS keyframes. No
-// PixiJS, no canvas, no WebM today — keeps the placeholder cheap and
-// lets the final asset slot in later as a static <video> swap. The
-// global prefers-reduced-motion rule disables all keyframe animations
-// so motion-sensitive visitors see the composed-but-still scene.
+// A document sprite travels from Anna's room to Oliver's on a ~6s loop,
+// representing the morning handoff. The "needs you" pulse sits over
+// Kai's room. Motion uses CSS keyframes and respects the global
+// prefers-reduced-motion rule.
 
 type Props = { ariaLabel: string };
 
@@ -19,102 +17,56 @@ export function HeroOffice({ ariaLabel }: Props) {
     <div
       role="img"
       aria-label={ariaLabel}
-      className="pixel-panel-lg scanlines relative aspect-[5/4] w-full overflow-hidden"
-      style={{
-        // Sky / floor split — same vocabulary as the spatial office
-        // section, so the hero reads as the same room.
-        background:
-          "linear-gradient(180deg, var(--accent-blue) 0 64%, #5b3a1f 64% 100%)",
-      }}
+      className="pixel-panel-lg scanlines relative w-full overflow-hidden p-3 sm:p-4"
+      style={{ background: "#2a2335" }}
     >
-      {/* Window on the back wall — small static detail behind the desks. */}
-      <span
-        aria-hidden
-        className="absolute left-[8%] top-[8%] block border-[var(--pixel)] border-[var(--panel-border)]"
-        style={{
-          width: 56,
-          height: 40,
-          background: "var(--accent-yellow)",
-          boxShadow: "inset 0 0 0 var(--pixel) var(--background)",
-        }}
-      />
+      {/* Three rooms — same component as the /office section so the
+          two surfaces read as the same room. */}
+      <div className="grid gap-2 sm:grid-cols-3">
+        <Room
+          name="ANNA"
+          accent={CHAR_ACCENT.ANNA}
+          floor={ROOM_PALETTE.ANNA.floor}
+          label="refund policy"
+          state="working"
+          monitorColors={ROOM_PALETTE.ANNA.monitorColors}
+          decoration={<Cactus size={24} />}
+        />
+        <Room
+          name="KAI"
+          accent={CHAR_ACCENT.KAI}
+          floor={ROOM_PALETTE.KAI.floor}
+          label="needs you"
+          state="waiting"
+          monitorColors={ROOM_PALETTE.KAI.monitorColors}
+          decoration={
+            <span className="anim-glow pixel-tag" style={{ background: "var(--accent-red)", color: "var(--background)" }}>
+              !
+            </span>
+          }
+        />
+        <Room
+          name="OLIVER"
+          accent={CHAR_ACCENT.OLIVER}
+          floor={ROOM_PALETTE.OLIVER.floor}
+          label="facilitating"
+          state="idle"
+          monitorColors={ROOM_PALETTE.OLIVER.monitorColors}
+          decoration={<Cactus size={24} />}
+        />
+      </div>
 
-      {/* Potted plant — corner detail. Pure SVG, tiny. */}
-      <span aria-hidden className="absolute bottom-[6%] left-[4%] block">
-        <Plant />
-      </span>
+      {/* Corridor band with cacti. */}
+      <div className="mt-2">
+        <Corridor count={5} />
+      </div>
 
-      {/* Document in transit — starts at Anna's desk, walks across the
-          room to Oliver's, pauses, repeats on a 6s loop. */}
-      <span aria-hidden className="absolute bottom-[36%] left-[16%] hero-doc">
+      {/* Document in transit — travels left-to-right across the top of
+          the corridor. Animation runs above the rooms via z-index. */}
+      <span aria-hidden className="hero-doc pointer-events-none absolute top-[28%] left-[12%] z-30">
         <Doc />
       </span>
-
-      {/* Three desks — equally spaced across the bottom band. */}
-      <div className="absolute inset-x-0 bottom-[6%] grid grid-cols-3 items-end px-4">
-        <DeskSlot character="ANNA" state="working" decoration="mug" />
-        <DeskSlot character="KAI" state="waiting" decoration="bubble" />
-        <DeskSlot character="OLIVER" state="idle" decoration="crt" />
-      </div>
     </div>
-  );
-}
-
-function DeskSlot({
-  character,
-  state,
-  decoration,
-}: {
-  character: "ANNA" | "KAI" | "OLIVER";
-  state: "idle" | "working" | "waiting";
-  decoration: "mug" | "crt" | "bubble";
-}) {
-  return (
-    <div className="relative flex flex-col items-center">
-      {decoration === "bubble" && (
-        <span className="anim-glow pixel-tag mb-2" style={{ background: "var(--accent-red)", color: "var(--background)" }}>
-          needs you
-        </span>
-      )}
-      <div className="relative">
-        <Minifig name={character} size={64} state={state} />
-        {decoration === "mug" && (
-          <span
-            aria-hidden
-            className="absolute -right-3 bottom-[40%]"
-          >
-            <Mug />
-          </span>
-        )}
-        {decoration === "crt" && (
-          <span
-            aria-hidden
-            className="absolute -left-4 bottom-[40%]"
-          >
-            <CRT />
-          </span>
-        )}
-      </div>
-      <Desk />
-    </div>
-  );
-}
-
-function Desk() {
-  return (
-    <svg
-      viewBox="0 0 16 6"
-      width="84"
-      height="32"
-      shapeRendering="crispEdges"
-      aria-hidden
-    >
-      <rect x="3" y="0" width="10" height="3" fill="var(--panel-border)" />
-      <rect x="4" y="1" width="8" height="1" fill="var(--accent-green)" />
-      <rect x="0" y="3" width="16" height="2" fill="#7a3f1a" />
-      <rect x="0" y="5" width="3" height="1" fill="var(--panel-border)" />
-      <rect x="13" y="5" width="3" height="1" fill="var(--panel-border)" />
-    </svg>
   );
 }
 
@@ -135,66 +87,6 @@ function Doc() {
       <rect x="2" y="3" width="4" height="1" fill="var(--panel-border)" />
       <rect x="2" y="5" width="4" height="1" fill="var(--panel-border)" />
       <rect x="2" y="7" width="3" height="1" fill="var(--panel-border)" />
-    </svg>
-  );
-}
-
-function Mug() {
-  return (
-    <svg
-      viewBox="0 0 6 6"
-      width="18"
-      height="18"
-      shapeRendering="crispEdges"
-      aria-hidden
-    >
-      <rect x="0" y="1" width="4" height="4" fill="var(--accent-red)" />
-      <rect x="0" y="1" width="4" height="1" fill="var(--panel-border)" />
-      <rect x="0" y="4" width="4" height="1" fill="var(--panel-border)" />
-      <rect x="0" y="1" width="1" height="4" fill="var(--panel-border)" />
-      <rect x="3" y="1" width="1" height="4" fill="var(--panel-border)" />
-      <rect x="4" y="2" width="1" height="2" fill="var(--panel-border)" />
-      <rect x="1" y="0" width="1" height="1" fill="#fff7e0" opacity="0.6" />
-    </svg>
-  );
-}
-
-function CRT() {
-  return (
-    <svg
-      viewBox="0 0 10 8"
-      width="28"
-      height="22"
-      shapeRendering="crispEdges"
-      aria-hidden
-    >
-      <rect x="0" y="0" width="10" height="6" fill="var(--panel-border)" />
-      <rect x="1" y="1" width="8" height="4" fill="#0a3a0a" />
-      <rect x="2" y="2" width="6" height="1" fill="var(--accent-green)" />
-      <rect x="2" y="4" width="4" height="1" fill="var(--accent-green)" />
-      <rect x="3" y="6" width="4" height="1" fill="var(--panel-border)" />
-      <rect x="2" y="7" width="6" height="1" fill="var(--panel-border)" />
-    </svg>
-  );
-}
-
-function Plant() {
-  return (
-    <svg
-      viewBox="0 0 8 10"
-      width="36"
-      height="45"
-      shapeRendering="crispEdges"
-      aria-hidden
-    >
-      <rect x="2" y="0" width="1" height="2" fill="var(--accent-green)" />
-      <rect x="5" y="0" width="1" height="2" fill="var(--accent-green)" />
-      <rect x="1" y="2" width="6" height="2" fill="var(--accent-green)" />
-      <rect x="0" y="3" width="2" height="2" fill="var(--accent-green)" />
-      <rect x="6" y="3" width="2" height="2" fill="var(--accent-green)" />
-      <rect x="2" y="5" width="4" height="1" fill="#3a2a4a" />
-      <rect x="2" y="6" width="4" height="3" fill="#7a3f1a" />
-      <rect x="2" y="9" width="4" height="1" fill="var(--panel-border)" />
     </svg>
   );
 }
