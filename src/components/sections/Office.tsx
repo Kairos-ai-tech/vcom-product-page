@@ -2,7 +2,6 @@ import { Minifig } from "@/components/Minifig";
 import {
   Room,
   Corridor,
-  Cactus,
   ROOM_PALETTE,
   CHAR_ACCENT,
 } from "@/components/OfficeSprites";
@@ -85,7 +84,6 @@ function OfficeScene({ dict }: { dict: Dict["office"] }) {
                 label={d.label}
                 state={d.state}
                 monitorColors={palette.monitorColors}
-                decoration={<Cactus size={26} />}
               />
             </li>
           );
